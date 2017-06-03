@@ -75,6 +75,18 @@
 			'widgetIndex',//Papa
 			{}
 			);
+        registerStatefulModal(
+			'widgetFilter',//Nombre del estado
+			'widgetFilter',//Componente
+			'widgetEntity',//Papa
+			{}
+			);
+        registerStatefulModal(
+			'widgetPreview',//Nombre del estado
+			'widgetPreview',//Componente
+			'widgetFilter',//Papa
+			{}
+			);
 
 		$urlRouterProvider.otherwise('/createWidget');
 

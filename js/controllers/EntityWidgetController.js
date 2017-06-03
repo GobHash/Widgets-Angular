@@ -19,10 +19,14 @@
 
     function entityWidgetController($scope, $rootScope, $state, $stateParams, EntitiesRepository) {
         var vm = this;
+        vm.stepTree = stepTree;
         var entityModal = {entity:0, datos:""};
         getEntitites()
         function getEntitites(){
             vm.entitiesType = EntitiesRepository.getEntities();
+        }
+        function stepTree(){
+            $state.go('widgetFilter');
         }
 
     }

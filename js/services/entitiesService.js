@@ -36,6 +36,16 @@
 			return widgetsType;
 		}
 
+		function getColumns() {
+			
+			var widgetsType = [
+                {id: 1, nombre: 'Pie Chart'},
+                {id: 2, nombre: 'Grafico de Barras'},
+                {id: 3, nombre: 'Grafico de Lineas'}
+            ];
+			return widgetsType;
+		}
+
 
 	}
 })();

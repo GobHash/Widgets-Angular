@@ -14,10 +14,10 @@
         "$rootScope",
         "$state",
         "$stateParams",
-        "EntitiesRepository"
+        "EntitiesService"
     ];
 
-    function previewWidgetController($scope, $rootScope, $state, $stateParams, EntitiesRepository) {
+    function previewWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
         
         $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];

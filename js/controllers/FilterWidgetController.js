@@ -14,10 +14,10 @@
         "$rootScope",
         "$state",
         "$stateParams",
-        "EntitiesRepository"
+        "EntitiesService"
     ];
 
-    function filterWidgetController($scope, $rootScope, $state, $stateParams, EntitiesRepository) {
+    function filterWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
         vm.stepFour = stepFour
         function stepFour(){

@@ -3,11 +3,11 @@
 
 	angular
 	.module('Widgets')
-	.factory('EntitiesRepository', EntitiesRepository);
+	.factory('EntitiesService', EntitiesService);
 
-	EntitiesRepository.$inject = ['$http'];
+	EntitiesService.$inject = ['$http'];
 
-	function EntitiesRepository($http){
+	function EntitiesService($http){
 		var service = {
 
 			getEntities: getEntities,

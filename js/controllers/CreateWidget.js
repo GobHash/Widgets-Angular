@@ -14,16 +14,16 @@
         "$rootScope",
         "$state",
         "$stateParams",
-        "EntitiesRepository"
+        "EntitiesService"
     ];
 
-    function createWidgetController($scope, $rootScope, $state, $stateParams, EntitiesRepository) {
+    function createWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
         vm.stepTwo = stepTwo;
         var widgetModal = {widget:0, nombre:""};
         getEntitites()
         function getEntitites(){
-            vm.widgetsType = EntitiesRepository.getWidgets();
+            vm.widgetsType = EntitiesService.getWidgets();
         }
         function stepTwo(){
             $state.go('widgetEntity');

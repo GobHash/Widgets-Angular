@@ -8,42 +8,66 @@
 	EntitiesService.$inject = ['$http'];
 
 	function EntitiesService($http){
-		var service = {
+		var entities = [
+			{id: 1, nombre: 'Comprador'},
+			{id: 2, nombre: 'Adjudicacion'},
+			{id: 3, nombre: 'Proveedor'}
+		];
 
+		var widgetsType = [
+			{id: 1, nombre: 'Pie Chart'},
+			{id: 2, nombre: 'Grafico de Barras'},
+			{id: 3, nombre: 'Grafico de Lineas'}
+		];
+
+		var entityColumns = [];
+
+		var service = {
 			getEntities: getEntities,
-			getWidgets: getWidgets
+			getWidgets : getWidgets,
+			getColumnsByEntity : getColumnsByEntity,
+			entities : entities,
+			widgetsType : widgetsType,
+			entityColumns : entityColumns
 		};
 		return service;
 
 
 		function getEntities() {
-			
-			var entities = [
-                {id: 1, nombre: 'Comprador'},
-                {id: 2, nombre: 'Compra'},
-                {id: 3, nombre: 'Proveedor'}
-            ];
-			return entities;
+			return service.entities;
 		}
 
 		function getWidgets() {
-			
-			var widgetsType = [
-                {id: 1, nombre: 'Pie Chart'},
-                {id: 2, nombre: 'Grafico de Barras'},
-                {id: 3, nombre: 'Grafico de Lineas'}
-            ];
-			return widgetsType;
+			return service.widgetsType;
 		}
 
-		function getColumns() {
+		function getColumnsByEntity(entity) {
 			
-			var widgetsType = [
-                {id: 1, nombre: 'Pie Chart'},
-                {id: 2, nombre: 'Grafico de Barras'},
-                {id: 3, nombre: 'Grafico de Lineas'}
-            ];
-			return widgetsType;
+			if(entity == "Comprador"){
+				service.entityColumns= [
+					{id:1, name:"Nombre"},
+					{id:2, name:"Tipo"},
+					{id:3, name:"Origen de fondos"},
+					{id:4, name:"Nit"}
+				];
+			}
+			if(entity == "Proveedor"){
+				service.entityColumns= [
+					{id:1, name:"Nombre"},
+					{id:2, name:"Tipo"},
+					{id:3, name:"Origen de fondos"},
+					{id:4, name:"Nit"}
+				];
+			}
+			if(entity == "Adjudicacion"){
+				service.entityColumns= [
+					{id:1, name:"Nombre"},
+					{id:2, name:"Tipo"},
+					{id:3, name:"Origen de fondos"},
+					{id:4, name:"Nit"}
+				];
+			}
+			
 		}
 
 

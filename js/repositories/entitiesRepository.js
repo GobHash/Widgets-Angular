@@ -7,7 +7,12 @@
     
     EntitiesService.$inject = ['$http'];
 
-	function EntitiesService($http){
+	function EntitiesRepository($http){
+        var repository = {
+
+        };
+
+        return repository;
     }
 
 })();

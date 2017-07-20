@@ -26,11 +26,18 @@
 		}
         
         vm.stepTree = stepTree;
+        vm.backStepOne = backStepOne;
         getEntitites()
         
         
+
+
         function getEntitites(){
             vm.entitiesType = EntitiesService.getEntities();
+        }
+
+        function backStepOne(){
+            $state.go('widgetIndex');
         }
 
         function stepTree(){

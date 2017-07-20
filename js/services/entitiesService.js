@@ -10,8 +10,8 @@
 	function EntitiesService($http){
 		var definition = {
 			name : null,
-			entity : null
-			
+			widgetType : null,
+			entity : null	
 		}
 		var entities = [
 			{id: 1, nombre: 'Comprador'},
@@ -36,7 +36,7 @@
 			entityColumns : entityColumns,
 			definition : definition,
 			getDefinition : getDefinition,
-			setDefinition : setDefinition
+			setBasicDefinition : setBasicDefinition
 		};
 		return service;
 
@@ -84,8 +84,9 @@
 			return service.definition;
 		}
 
-		function setDefinition(definition){
-			service.definition = definition;
+		function setBasicDefinition(definition){
+			service.definition.name = definition.name;
+			service.definition.widgetType = definition.widgetsType;
 		}
 
 

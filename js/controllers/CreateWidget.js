@@ -22,8 +22,7 @@
         
         vm.definition = {
             name : null,
-            widgetType : null,
-			entity : null	
+            widgetType : null
         }
         
         vm.stepTwo = stepTwo;
@@ -38,7 +37,7 @@
         }
 
         function setDefinition(){
-            EntitiesService.setDefinition(vm.definition);
+            EntitiesService.setBasicDefinition(vm.definition);
         }
         
     }

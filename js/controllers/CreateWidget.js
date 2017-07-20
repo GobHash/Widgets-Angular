@@ -19,14 +19,26 @@
 
     function createWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
+        
+        vm.definition = {
+            name : null,
+            widgetType : null,
+			entity : null	
+        }
+        
         vm.stepTwo = stepTwo;
-        var widgetModal = {widget:0, nombre:""};
         getEntitites()
         function getEntitites(){
             vm.widgetsType = EntitiesService.getWidgets();
         }
         function stepTwo(){
+            setDefinition();
+            console.log(vm.definition);
             $state.go('widgetEntity');
+        }
+
+        function setDefinition(){
+            EntitiesService.setDefinition(vm.definition);
         }
         
     }

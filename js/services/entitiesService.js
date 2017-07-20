@@ -8,6 +8,11 @@
 	EntitiesService.$inject = ['$http'];
 
 	function EntitiesService($http){
+		var definition = {
+			name : null,
+			entity : null
+			
+		}
 		var entities = [
 			{id: 1, nombre: 'Comprador'},
 			{id: 2, nombre: 'Adjudicacion'},
@@ -28,7 +33,10 @@
 			getColumnsByEntity : getColumnsByEntity,
 			entities : entities,
 			widgetsType : widgetsType,
-			entityColumns : entityColumns
+			entityColumns : entityColumns,
+			definition : definition,
+			getDefinition : getDefinition,
+			setDefinition : setDefinition
 		};
 		return service;
 
@@ -55,19 +63,29 @@
 				service.entityColumns= [
 					{id:1, name:"Nombre"},
 					{id:2, name:"Tipo"},
-					{id:3, name:"Origen de fondos"},
+					{id:3, name:"Municipio"},
 					{id:4, name:"Nit"}
 				];
 			}
 			if(entity == "Adjudicacion"){
 				service.entityColumns= [
-					{id:1, name:"Nombre"},
-					{id:2, name:"Tipo"},
-					{id:3, name:"Origen de fondos"},
-					{id:4, name:"Nit"}
+					{id:1, name:"Status"},
+					{id:2, name:"Modalidad"},
+					{id:3, name:"Categoria"},
+					{id:4, name:"Monto"}
 				];
 			}
+
+			return service.entityColumns;
 			
+		}
+
+		function getDefinition(){
+			return service.definition;
+		}
+
+		function setDefinition(definition){
+			service.definition = definition;
 		}
 
 

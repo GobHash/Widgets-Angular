@@ -19,15 +19,24 @@
 
     function entityWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
+        vm.definition = {
+            name : null,
+            widgetType : null,
+			entity : null	
+		}
+        
         vm.stepTree = stepTree;
-        var entityModal = {entity:0, datos:""};
         getEntitites()
+        
+        
         function getEntitites(){
             vm.entitiesType = EntitiesService.getEntities();
         }
+
         function stepTree(){
             $state.go('widgetFilter');
         }
+        console.log(vm.definition);
 
     }
     

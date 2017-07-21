@@ -8,13 +8,12 @@
     <form>
     <div class="form-group">
         <label for="recipient-name">Entidades</label>
-         <select class="form-control" ng-model="vmWidgetData.entityModal.entity" ng-options="item as item.nombre for item in vmWidgetData.entitiesType track by item.id"  ng-required="true" >						
+        <select class="form-control" ng-model="vmWidgetData.definition.entity" ng-options="item as item.nombre for item in vmWidgetData.entitiesType track by item.id" ng-change="vmWidgetData.getColumnsByEntity()" ng-required="true" >						
 		</select>
-        </select>
     </div>
-    <div class="form-group">
-        <label for="recipient-name">Campos</label>
-        <select class="form-control" id="widget-columns">
+    <div class="form-group" ng-if="vmWidgetData.definition.entity != null">
+        <label for="recipient-name">Campo Base</label>
+        <select class="form-control" ng-model="vmWidgetData.definition.entity" ng-options="item as item.name for item in vmWidgetData.columns track by item.id"  ng-required="true" >
         </select>
     </div>
     

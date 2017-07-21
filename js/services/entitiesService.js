@@ -11,7 +11,9 @@
 		var definition = {
 			name : null,
 			widgetType : null,
-			entity : null	
+			entity : null,
+			filters : [{}],
+			baseColumn : null
 		}
 		var entities = [
 			{id: 1, nombre: 'Comprador'},
@@ -86,7 +88,7 @@
 
 		function setBasicDefinition(definition){
 			service.definition.name = definition.name;
-			service.definition.widgetType = definition.widgetsType;
+			service.definition.widgetType = definition.widgetType;
 		}
 
 

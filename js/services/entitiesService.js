@@ -16,15 +16,15 @@
 			baseColumn : null
 		}
 		var entities = [
-			{id: 1, nombre: 'Comprador'},
-			{id: 2, nombre: 'Adjudicacion'},
-			{id: 3, nombre: 'Proveedor'}
+			{id: 1, name: 'Comprador'},
+			{id: 2, name: 'Adjudicacion'},
+			{id: 3, name: 'Proveedor'}
 		];
 
 		var widgetsType = [
-			{id: 1, nombre: 'Pie Chart'},
-			{id: 2, nombre: 'Grafico de Barras'},
-			{id: 3, nombre: 'Grafico de Lineas'}
+			{id: 1, name: 'Pie Chart'},
+			{id: 2, name: 'Grafico de Barras'},
+			{id: 3, name: 'Grafico de Lineas'}
 		];
 
 		var entityColumns = [];
@@ -89,6 +89,14 @@
 		function setBasicDefinition(definition){
 			service.definition.name = definition.name;
 			service.definition.widgetType = definition.widgetType;
+		}
+
+		function setEntity(entity){
+			service.definition.entity = entity;
+		}
+
+		function setBaseColumn(column){
+			service.definition.baseColumn = column;
 		}
 
 

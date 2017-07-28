@@ -45,11 +45,19 @@
 
         function getColumnsByEntity(){
             if(vm.definition.entity != null){
-                vm.columns = EntitiesService.getColumnsByEntity(vm.definition.entity.nombre);
+                vm.columns = EntitiesService.getColumnsByEntity(vm.definition.entity.name);
             }
             else{
                 vm.columns = {};
             }
+        }
+
+        function setEntityInDefinition(){
+            EntitiesService.setEntity(vm.definition.entity)
+        }
+
+        function setBaseColumnInDefinition(){
+            EntitiesService.setBaseColumn(vm.definition.baseColumn)
         }
 
         function backStepOne(){
@@ -57,6 +65,8 @@
         }
 
         function stepTree(){
+            setEntityInDefinition();
+            setBaseColumnInDefinition();
             $state.go('widgetFilter');
         }
         console.log(vm.definition);

@@ -32,6 +32,7 @@
         vm.getColumnsByEntity = getColumnsByEntity;
         getEntitites();
         getDefinition();
+        getValueOperation();
         //getColumnsByEntity();
 
 
@@ -41,6 +42,10 @@
 
         function getDefinition(){
             vm.definition = EntitiesService.getDefinition();
+        }
+
+        function getValueOperation(){
+            vm.valueOperation = EntitiesService.getValueOperation()
         }
 
         function getColumnsByEntity(){

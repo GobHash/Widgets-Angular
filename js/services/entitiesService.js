@@ -34,7 +34,45 @@
 			{id: 3, name: 'Grafico de Lineas'}
 		];
 
-		var entityColumns = [];
+		var entityColumns = [
+	
+			{id:1, name:"Nombre del Comprador", type: "string", entity:"Comprador"},
+			{id:2, name:"Tipo de Comprador", type: "string", entity:"Comprador"},
+			{id:3, name:"Origen de fondos", type: "string", entity:"Comprador"},
+			{id:4, name:"Nit del Comprador", type: "string", entity:"Comprador"},
+			{
+				id: 5,
+				name: "Nombre del Proveedor",
+				type: "string",
+				entity: "Proveedor"
+			},
+			{
+				id: 6, 
+				name:"Tipo de Proveedor",
+				type: "string",
+				entity: "Proveedor"
+			},
+			{
+				id: 7, 
+				name: "Municipio",
+				type: "string",
+				entity: "Proveedor"
+			},
+			{
+				id: 8, 
+				name: "Nit de Proveedor",
+				type: "string",
+				entity: "Proveedor"
+			},
+			{id:9, name:"Estatus", type: "string", entity: "Adjudicacion"},
+			{id:10, name:"Modalidad", type: "string", entity: "Adjudicacion" },
+			{id:11, name:"Categoria", type: "string", entity: "Adjudicacion"},
+			{id:12, name:"Monto", type: "int", entity: "Adjudicacion"},
+			{id:13, name: "Año de Adjudicacion", type: "date", entity: "Adjudicacion"},
+			{id:14, name: "Mes de Adjudicacion", type: "date", entity: "Adjudicacion"}
+
+			
+		];
 
 		var service = {
 			getEntities: getEntities,
@@ -47,7 +85,9 @@
 			getDefinition : getDefinition,
 			setBasicDefinition : setBasicDefinition,
 			setEntity : setEntity,
-			setBaseColumn : setBaseColumn
+			setBaseColumn : setBaseColumn,
+			valueOperation : valueOperation,
+			getValueOperation : getValueOperation
 		};
 		return service;
 
@@ -61,51 +101,15 @@
 		}
 
 		function getColumnsByEntity(entity) {
-			
-			if(entity == "Comprador"){
-				service.entityColumns= [
-					{id:1, name:"Nombre", type: "string"},
-					{id:2, name:"Tipo", type: "string"},
-					{id:3, name:"Origen de fondos", type: "string"},
-					{id:4, name:"Nit", type: "string"}
-				];
+			var columns = [];
+			for(var i=0; i<service.entityColumns.length; i++){
+				var element = service.entityColumns[i];
+				if(element.entity == entity){
+					columns.push(element);
+				}
+				
 			}
-			if(entity == "Proveedor"){
-				service.entityColumns= [
-					{
-						id: 1,
-						name: "Nombre",
-						type: "string"
-					},
-					{
-						id: 2, 
-						name:"Tipo",
-						type: "string"
-					},
-					{
-						id: 3, 
-						name: "Municipio",
-						type: "string"
-					},
-					{
-						id: 4, 
-						name: "Nit",
-						type: "string"
-					}
-				];
-			}
-			if(entity == "Adjudicacion"){
-				service.entityColumns= [
-					{id:1, name:"Status", type: "string"},
-					{id:2, name:"Modalidad", type: "string"},
-					{id:3, name:"Categoria", type: "string"},
-					{id:4, name:"Monto", type: "int"},
-					{id:5, name: "Año de Adjudicacion", type: "date"},
-					{id:5, name: "Mes de Adjudicacion", type: "date"}
-				];
-			}
-
-			return service.entityColumns;
+			return columns;
 			
 		}
 
@@ -124,6 +128,13 @@
 
 		function setBaseColumn(column){
 			service.definition.baseColumn = column;
+		}
+
+		function getValueOperation(){
+			return service.valueOperation;
+		}
+		function getAllColumns(){
+			return service.entityColumns;
 		}
 
 

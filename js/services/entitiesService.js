@@ -13,7 +13,14 @@
 			widgetType : null,
 			entity : null,
 			filters : [{}],
-			baseColumn : null
+			baseColumn : null,
+			value:{}
+		}
+		var valueOperation = {
+			add : 'suma',
+			count : 'contar',
+			min : 'minimo',
+			max : 'maximo' 
 		}
 		var entities = [
 			{id: 1, name: 'Comprador'},
@@ -38,7 +45,9 @@
 			entityColumns : entityColumns,
 			definition : definition,
 			getDefinition : getDefinition,
-			setBasicDefinition : setBasicDefinition
+			setBasicDefinition : setBasicDefinition,
+			setEntity : setEntity,
+			setBaseColumn : setBaseColumn
 		};
 		return service;
 
@@ -55,26 +64,44 @@
 			
 			if(entity == "Comprador"){
 				service.entityColumns= [
-					{id:1, name:"Nombre"},
-					{id:2, name:"Tipo"},
-					{id:3, name:"Origen de fondos"},
-					{id:4, name:"Nit"}
+					{id:1, name:"Nombre", type: "string"},
+					{id:2, name:"Tipo", type: "string"},
+					{id:3, name:"Origen de fondos", type: "string"},
+					{id:4, name:"Nit", type: "string"}
 				];
 			}
 			if(entity == "Proveedor"){
 				service.entityColumns= [
-					{id:1, name:"Nombre"},
-					{id:2, name:"Tipo"},
-					{id:3, name:"Municipio"},
-					{id:4, name:"Nit"}
+					{
+						id: 1,
+						name: "Nombre",
+						type: "string"
+					},
+					{
+						id: 2, 
+						name:"Tipo",
+						type: "string"
+					},
+					{
+						id: 3, 
+						name: "Municipio",
+						type: "string"
+					},
+					{
+						id: 4, 
+						name: "Nit",
+						type: "string"
+					}
 				];
 			}
 			if(entity == "Adjudicacion"){
 				service.entityColumns= [
-					{id:1, name:"Status"},
-					{id:2, name:"Modalidad"},
-					{id:3, name:"Categoria"},
-					{id:4, name:"Monto"}
+					{id:1, name:"Status", type: "string"},
+					{id:2, name:"Modalidad", type: "string"},
+					{id:3, name:"Categoria", type: "string"},
+					{id:4, name:"Monto", type: "int"},
+					{id:5, name: "Año de Adjudicacion", type: "date"},
+					{id:5, name: "Mes de Adjudicacion", type: "date"}
 				];
 			}
 

@@ -26,6 +26,8 @@
             filters : [{}],
             baseColumn : null
         };
+        vm.valueColumn = null;
+        vm.selectValueOp = null;
         
         vm.stepTree = stepTree;
         vm.backStepOne = backStepOne;
@@ -33,6 +35,7 @@
         getEntitites();
         getDefinition();
         getValueOperation();
+        getAllColumns();
         //getColumnsByEntity();
 
 
@@ -46,6 +49,10 @@
 
         function getValueOperation(){
             vm.valueOperation = EntitiesService.getValueOperation()
+        }
+
+        function getAllColumns(){
+            vm.allColumns = EntitiesService.getAllColumns();
         }
 
         function getColumnsByEntity(){

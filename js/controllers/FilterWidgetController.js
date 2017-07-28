@@ -20,11 +20,15 @@
     function filterWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
         vm.definition = EntitiesService.getDefinition();
-        
-        vm.stepFour = stepFour
+
+        vm.stepFour = stepFour;
+        vm.stepTree = stepTree;
         function stepFour(){
             $state.go('widgetPreview');
         };
+        function stepTree(){
+            $state.go('widgetEntity')
+        }
 
     }
     

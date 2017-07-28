@@ -16,12 +16,24 @@
 			baseColumn : null,
 			value:{}
 		}
-		var valueOperation = {
-			add : 'suma',
-			count : 'contar',
-			min : 'minimo',
-			max : 'maximo' 
-		}
+		var valueOperation = [
+			{
+				id: 1,
+				operation: 'suma'
+			},
+			{
+				id: 2,
+				operation: 'contar'
+			},
+			{
+				id: 3,
+				operation: 'minimo' 
+			},
+			{
+				id: 4,
+				operation: 'maximo'
+			}
+		]
 		var entities = [
 			{id: 1, name: 'Comprador'},
 			{id: 2, name: 'Adjudicacion'},
@@ -87,7 +99,8 @@
 			setEntity : setEntity,
 			setBaseColumn : setBaseColumn,
 			valueOperation : valueOperation,
-			getValueOperation : getValueOperation
+			getValueOperation : getValueOperation,
+			getAllColumns : getAllColumns
 		};
 		return service;
 

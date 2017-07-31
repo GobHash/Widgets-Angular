@@ -19,19 +19,19 @@
 		var valueOperation = [
 			{
 				id: 1,
-				operation: 'suma'
+				operation: 'Sumar'
 			},
 			{
 				id: 2,
-				operation: 'contar'
+				operation: 'Contar'
 			},
 			{
 				id: 3,
-				operation: 'minimo' 
+				operation: 'Sacar el Minimo' 
 			},
 			{
 				id: 4,
-				operation: 'maximo'
+				operation: 'Sacar el Maximo'
 			}
 		]
 		var entities = [
@@ -100,7 +100,8 @@
 			setBaseColumn : setBaseColumn,
 			valueOperation : valueOperation,
 			getValueOperation : getValueOperation,
-			getAllColumns : getAllColumns
+			getAllColumns : getAllColumns,
+			setValueOperation : setValueOperation
 		};
 		return service;
 
@@ -148,6 +149,9 @@
 		}
 		function getAllColumns(){
 			return service.entityColumns;
+		}
+		function setValueOperation(value){
+			service.definition.value = value;
 		}
 
 

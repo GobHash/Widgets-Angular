@@ -75,10 +75,14 @@
         function backStepOne(){
             $state.go('widgetIndex');
         }
+        function setValueOperation(){
+            EntitiesService.setValueOperation(vm.selectValueOp);
+        }
 
         function stepTree(){
             setEntityInDefinition();
             setBaseColumnInDefinition();
+            setValueOperation();
             $state.go('widgetFilter');
         }
         console.log(vm.definition);

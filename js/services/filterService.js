@@ -9,14 +9,17 @@
 
 	function FilterService($http){
         var filters = [
-            {
-                name : null,
-                filterType : null,
-                value : null
-            }
+        ];
+
+        var filterOperationsType = [
+
         ];
         var service = {
-            filters : filters
+            filters : filters,
+            filterOperationsType: filterOperationsType,
+            getFilter: getFilter,
+            setFilter: setFilter,
+            getFilterOperationsType : getFilterOperationsType
         }
         return service;
 
@@ -29,6 +32,32 @@
                 var element = listOfFilters[i]
                 service.filters.push(element);
             }
+        }
+
+        function getFilterOperationsType(){
+            service.filterOperationsType = [
+                {
+                    id: 1,
+                    name: "Igual a"
+                },
+                {
+                    id: 2,
+                    name: "Diferente de"
+                },
+                {
+                    id: 3,
+                    name: "Contiene"
+                },
+                {
+                    id: 4,
+                    name: "Mayor que"
+                },
+                {
+                    id: 5,
+                    name: "Menor que"
+                }
+            ];
+            return service.filterOperationsType;
         }
     }
 })();

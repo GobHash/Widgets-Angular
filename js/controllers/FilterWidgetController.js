@@ -14,12 +14,14 @@
         "$rootScope",
         "$state",
         "$stateParams",
-        "EntitiesService"
+        "EntitiesService",
+        "FilterService"
     ];
 
-    function filterWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
+    function filterWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService, FilterService) {
         var vm = this;
         vm.definition = EntitiesService.getDefinition();
+        getFiltersOperationsType();
 
         vm.stepFour = stepFour;
         vm.stepTree = stepTree;
@@ -28,6 +30,10 @@
         };
         function stepTree(){
             $state.go('widgetEntity')
+        }
+
+        function getFiltersOperationsType(){
+            vm.filtersOperations = FilterService.getFilterOperationsType();
         }
 
     }

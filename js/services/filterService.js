@@ -38,23 +38,23 @@
             service.filterOperationsType = [
                 {
                     id: 1,
-                    name: "Igual a"
+                    operation: "Igual a"
                 },
                 {
                     id: 2,
-                    name: "Diferente de"
+                    operation: "Diferente de"
                 },
                 {
                     id: 3,
-                    name: "Contiene"
+                    operation: "Contiene"
                 },
                 {
                     id: 4,
-                    name: "Mayor que"
+                    operation: "Mayor que"
                 },
                 {
                     id: 5,
-                    name: "Menor que"
+                    operation: "Menor que"
                 }
             ];
             return service.filterOperationsType;

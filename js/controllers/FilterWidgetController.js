@@ -22,6 +22,7 @@
         var vm = this;
         vm.definition = EntitiesService.getDefinition();
         getFiltersOperationsType();
+        getAllColumns();
 
         vm.stepFour = stepFour;
         vm.stepTree = stepTree;
@@ -33,7 +34,11 @@
         }
 
         function getFiltersOperationsType(){
-            vm.filtersOperations = FilterService.getFilterOperationsType();
+            vm.filterOperations = FilterService.getFilterOperationsType();
+        }
+
+        function getAllColumns(){
+            vm.allColumns =  EntitiesService.getAllColumns();
         }
 
     }

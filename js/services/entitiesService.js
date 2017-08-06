@@ -12,7 +12,7 @@
 			name : null,
 			widgetType : null,
 			entity : null,
-			filters : [{}],
+			filters : null,
 			baseColumn : null,
 			value:{}
 		}
@@ -101,7 +101,8 @@
 			valueOperation : valueOperation,
 			getValueOperation : getValueOperation,
 			getAllColumns : getAllColumns,
-			setValueOperation : setValueOperation
+			setValueOperation : setValueOperation,
+			setFilters: setFilters
 		};
 		return service;
 
@@ -147,11 +148,17 @@
 		function getValueOperation(){
 			return service.valueOperation;
 		}
+
 		function getAllColumns(){
 			return service.entityColumns;
 		}
+
 		function setValueOperation(value){
 			service.definition.value = value;
+		}
+
+		function setFilters(filter){
+			service.definition.filters = filter;
 		}
 
 

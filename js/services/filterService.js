@@ -9,6 +9,11 @@
 
 	function FilterService($http){
         var filters = [
+            {
+                column: null,
+                operation: null,
+                value: null
+            }
         ];
 
         var filterOperationsType = [
@@ -17,21 +22,18 @@
         var service = {
             filters : filters,
             filterOperationsType: filterOperationsType,
-            getFilter: getFilter,
-            setFilter: setFilter,
+            getFilters: getFilters,
+            setFilters: setFilters,
             getFilterOperationsType : getFilterOperationsType
         }
         return service;
 
-        function getFilter(){
+        function getFilters(){
             return service.filters;
         }
 
-        function setFilter(listOfFilters){
-            for(var i=0; i<listOfFilters.length; i++){
-                var element = listOfFilters[i]
-                service.filters.push(element);
-            }
+        function setFilters(listOfFilters){
+            service.filters = listOfFilters;
         }
 
         function getFilterOperationsType(){

@@ -7,7 +7,7 @@
     <form>
     <div class="form-group">
         <label for="recipient-name">Filtros</label>
-        <div class="row" ng-repeat="filter in vmWidgetFilter.filters">
+        <div class="row filter" ng-repeat="filter in vmWidgetFilter.filters">
             <div class="col-8 col-sm-4">
                 <select class="form-control" id="widget-entities" ng-model="filter.column" ng-options="item as item.name for item in vmWidgetFilter.allColumns track by item.id"  ng-required="true">
                 </select>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="recipient-name">Fechas</label>
+        <label for="recipient-name">Filto por Fecha</label>
         <select class="form-control" id="widget-columns">
         </select>
     </div>

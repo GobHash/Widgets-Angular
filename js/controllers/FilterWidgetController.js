@@ -21,11 +21,21 @@
     function filterWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService, FilterService) {
         var vm = this;
         vm.definition = EntitiesService.getDefinition();
+        vm.filters =[
+            {
+                column: null,
+                operation: null,
+                value: null
+            }
+        ]
+
         getFiltersOperationsType();
         getAllColumns();
 
         vm.stepFour = stepFour;
         vm.stepTree = stepTree;
+        vm.addFilter = addFilter;
+
         function stepFour(){
             $state.go('widgetPreview');
         };
@@ -39,6 +49,20 @@
 
         function getAllColumns(){
             vm.allColumns =  EntitiesService.getAllColumns();
+        }
+
+        function addFilter(){
+            vm.filters.push(
+                {
+                    column: null,
+                    operation: null,
+                    value: null  
+                }
+            )
+        }
+
+        function setFilters(){
+            
         }
 
     }

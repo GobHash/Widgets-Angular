@@ -13,6 +13,7 @@
 			widgetType : null,
 			entity : null,
 			filters : null,
+			dateFilter: null,
 			baseColumn : null,
 			value:{}
 		}

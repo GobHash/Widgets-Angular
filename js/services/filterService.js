@@ -16,6 +16,9 @@
             }
         ];
 
+        var dateFilter = null;
+        var dateOperationsFilters = null;
+
         var filterOperationsType = [
 
         ];
@@ -24,7 +27,8 @@
             filterOperationsType: filterOperationsType,
             getFilters: getFilters,
             setFilters: setFilters,
-            getFilterOperationsType : getFilterOperationsType
+            getFilterOperationsType : getFilterOperationsType,
+            dateFilter: dateFilter
         }
         return service;
 
@@ -59,6 +63,29 @@
                     operation: "Menor que"
                 }
             ];
+            return service.filterOperationsType;
+        }
+
+        function getDateOperationFilters(){
+            service.dateOperationsFilters = [
+                
+                {
+                    id: 1,
+                    operation: 'Ultima Semana'
+                },
+                {
+                    id: 2,
+                    operation: 'Ultimo Mes'
+                },
+                {
+                    id: 3,
+                    operation: 'Ultimos 6 Meses'
+                },
+                {
+                    id: 4,
+                    operation: 'Ultimo año'
+                }
+            ]
             return service.filterOperationsType;
         }
     }

@@ -26,6 +26,15 @@
         getFiltersOperationsType();
         getAllColumns();
 
+        vm.dpOpen = false;
+        vm.dpFormat = 'dd/MM/yy';
+        vm.dpOptions = {
+            datepickerMode: 'day',
+            minMode: 'day'
+        }
+        var today = new Date();
+        vm.cardExpires = new Date(today.getFullYear(), today.getMonth(), today.getDay(), null, null, null, null);
+
         vm.stepFour = stepFour;
         vm.stepTree = stepTree;
         vm.addFilter = addFilter;

@@ -84,6 +84,10 @@
                 {
                     id: 4,
                     operation: 'Ultimo año'
+                },
+                {
+                    id: 5,
+                    operation: 'Entre'
                 }
             ]
             return service.filterOperationsType;

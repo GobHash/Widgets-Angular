@@ -19,23 +19,18 @@
 
     function entityWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
-        vm.definition = {
-            name : null,
-			widgetType : null,
-			entity : null,
-            filters : [{}],
-            baseColumn : null
-        };
+        getDefinition();
         vm.valueColumn = null;
         vm.selectValueOp = null;
+        
+        getEntitites();
+        getValueOperation();
+        getAllColumns();
         
         vm.stepTree = stepTree;
         vm.backStepOne = backStepOne;
         vm.getColumnsByEntity = getColumnsByEntity;
-        getEntitites();
-        getDefinition();
-        getValueOperation();
-        getAllColumns();
+        
         //getColumnsByEntity();
 
 

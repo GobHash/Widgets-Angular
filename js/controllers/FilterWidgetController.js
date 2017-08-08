@@ -25,6 +25,7 @@
 
         getFiltersOperationsType();
         getAllColumns();
+        getDateOperationFilters();
 
         vm.dpOpen = false;
         vm.dpFormat = 'dd/MM/yy';
@@ -38,6 +39,7 @@
         vm.stepFour = stepFour;
         vm.stepTree = stepTree;
         vm.addFilter = addFilter;
+        
 
         function stepFour(){
             setFilters();
@@ -71,6 +73,10 @@
             FilterService.setFilters(vm.filters);
             vm.definition.filters = vm.filters;
             EntitiesService.setFilters(vm.filters);
+        }
+
+        function getDateOperationFilters(){
+            vm.dateOperationFilter = FilterService.getDateOperationFilters();
         }
 
     }

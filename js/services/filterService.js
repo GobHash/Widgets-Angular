@@ -28,7 +28,9 @@
             getFilters: getFilters,
             setFilters: setFilters,
             getFilterOperationsType : getFilterOperationsType,
-            dateFilter: dateFilter
+            dateFilter: dateFilter,
+            getDateOperationFilters: getDateOperationFilters,
+            dateOperationsFilters: dateOperationsFilters
         }
         return service;
 
@@ -90,7 +92,7 @@
                     operation: 'Entre'
                 }
             ]
-            return service.filterOperationsType;
+            return service.dateOperationsFilters;
         }
     }
 })();

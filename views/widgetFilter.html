@@ -12,16 +12,20 @@
                 <select class="form-control" id="widget-entities" ng-model="filter.column" ng-options="item as item.name for item in vmWidgetFilter.allColumns track by item.id"  ng-required="true">
                 </select>
             </div>
-            <div class="col-8 col-sm-3">
+            <div class="col-8 col-sm-2">
                 <select class="form-control" ng-model="filter.operation" ng-options="item as item.operation for item in vmWidgetFilter.filterOperations track by item.id"  ng-required="true">
                 </select>
             </div>
             <div class="col-8 col-sm-3">
                 <input type="text" class="form-control" id="value" ng-model="filter.value"></input>
             </div>
-            <div class="col-8 col-sm-2">
-                <button class="btn btn-primary btn-next" ng-click="vmWidgetFilter.addFilter()">Agregar</button>
+            <div class="col-8 col-sm-1">
+                <button class="btn btn-primary btn-next" ng-click="vmWidgetFilter.addFilter()"><span class="	glyphicon glyphicon-plus"></span></button>
             </div>
+            <div class="col-8 col-sm-1">
+                <button class="btn btn-primary btn-next" ng-click=""><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+            
         </div>
     </div>
     <div class="form-group">

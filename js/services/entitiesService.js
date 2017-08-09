@@ -5,9 +5,9 @@
 	.module('Widgets')
 	.factory('EntitiesService', EntitiesService);
 
-	EntitiesService.$inject = ['$http'];
+	EntitiesService.$inject = ['$http', 'EntitiesRepository'];
 
-	function EntitiesService($http){
+	function EntitiesService($http, EntitiesRepository){
 		var definition = {
 			name : null,
 			widgetType : null,
@@ -109,7 +109,13 @@
 
 
 		function getEntities() {
-			return service.entities;
+			return EntitiesRepository.getEntities().then(function(data){
+				service.entities = data;
+				return data
+			}).catch(function(err){
+				console.log(err);
+			})
+			
 		}
 
 		function getWidgets() {

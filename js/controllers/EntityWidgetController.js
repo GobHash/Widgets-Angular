@@ -35,7 +35,11 @@
 
 
         function getEntitites(){
-            vm.entitiesType = EntitiesService.getEntities();
+            vm.entitiesType = EntitiesService.getEntities().then(function(data){
+                vm.entitiesType = data
+            }).catch(function(err){
+                console.log(err);
+            });
         }
 
         function getDefinition(){

@@ -22,6 +22,12 @@
         var vm = this;
         vm.definition = EntitiesService.getDefinition();
         vm.filters = FilterService.getFilters();
+        vm.numberOfFilters = [1];
+        vm.filter = {
+            column: null,
+            operation: null,
+            value: null
+        }
 
         getFiltersOperationsType();
         getAllColumns();
@@ -39,7 +45,7 @@
         vm.stepFour = stepFour;
         vm.stepTree = stepTree;
         vm.addFilter = addFilter;
-        
+        vm.deleteFilter = deleteFilter;
 
         function stepFour(){
             setFilters();
@@ -63,9 +69,17 @@
                 {
                     column: null,
                     operation: null,
-                    value: null  
+                    value: null
                 }
             )
+            
+        }
+
+        function deleteFilter(filter){
+            var i = vm.filters.indexOf(filter);
+            if(i != -1) {
+                vm.filters.splice(i, 1);
+            }
         }
 
         function setFilters(){

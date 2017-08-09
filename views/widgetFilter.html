@@ -7,6 +7,7 @@
     <form>
     <div class="form-group">
         <label for="recipient-name">Filtros</label>
+        
         <div class="row filter" ng-repeat="filter in vmWidgetFilter.filters">
             <div class="col-8 col-sm-4">
                 <select class="form-control" id="widget-entities" ng-model="filter.column" ng-options="item as item.name for item in vmWidgetFilter.allColumns track by item.id"  ng-required="true">
@@ -23,7 +24,7 @@
                 <button class="btn btn-primary btn-next" ng-click="vmWidgetFilter.addFilter()"><span class="	glyphicon glyphicon-plus"></span></button>
             </div>
             <div class="col-8 col-sm-1">
-                <button class="btn btn-primary btn-next" ng-click=""><span class="glyphicon glyphicon-remove"></span></button>
+                <button class="btn btn-primary btn-next" ng-click="vmWidgetFilter.deleteFilter(filter)"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             
         </div>

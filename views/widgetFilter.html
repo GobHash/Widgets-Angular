@@ -32,8 +32,30 @@
     <div class="form-group">
         <label for="recipient-name">Filto por Fecha</label>
         <div class="row">
-            <div class="col-4 col-lg-4">
-                <select class="form-control" ng-model="filter.Dateoperation" ng-options="item as item.operation for item in vmWidgetFilter.dateOperationFilter track by item.id"  ng-required="true">
+            <div class="col col-lg-1" ng-if="vmWidgetFilter.dateFilter.operation.operation == 'Entre' ">
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vmWidgetFilter.dpeOpen = !vmWidgetFilter.dpeOpen">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+                </span>
+            </div>
+            <div ng-if="vmWidgetFilter.dateFilter.operation.operation == 'Entre' " class="col col-lg-3" ng-disabled="true">
+                <input type="text" 
+                name="date" 
+                class="form-control" 
+                id="date" 
+                uib-datepicker-popup="{{vmWidgetFilter.dpeFormat}}" 
+                placeholder="HASTA {{vmWidgetFilter.dpeFormat}}" 
+                ng-model="vmWidgetFilter.dateFilter.endDate" 
+                is-open="vmWidgetFilter.dpeOpen" 
+                datepicker-options="vmWidgetFilter.dpeOptions" 
+                close-text="Close" ng-change="vmWidgetFilter.validateDate()">
+            </div>
+            <div class="col-4 col-lg-3">
+                <select class="form-control" 
+                ng-model="vmWidgetFilter.dateFilter.operation" 
+                ng-options="item as item.operation for item in vmWidgetFilter.dateOperationFilter track by item.id"  
+                ng-required="true">
                 </select>
             </div>
             <div class="col col-lg-1">
@@ -41,18 +63,20 @@
                 <button type="button" class="btn btn-default" ng-click="vmWidgetFilter.dpOpen = !vmWidgetFilter.dpOpen"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
             </div>
-            <div class="col col-lg-4" ng-disabled="true">
+            <div class="col col-lg-3" ng-disabled="true">
                 <input type="text" 
                 name="date" 
                 class="form-control" 
                 id="date" 
                 uib-datepicker-popup="{{vmWidgetFilter.dpFormat}}" 
-                placeholder="{{vmWidgetFilter.dpFormat}}" 
-                ng-model="vmWidgetFilter.date" 
+                placeholder="DESDE {{vmWidgetFilter.dpFormat}}" 
+                ng-model="vmWidgetFilter.dateFilter.startDate" 
                 is-open="vmWidgetFilter.dpOpen" 
                 datepicker-options="vmWidgetFilter.dpOptions" 
                 close-text="Close" ng-change="vmWidgetFilter.validateDate()">
             </div>
+
+            
             
             
         </div>

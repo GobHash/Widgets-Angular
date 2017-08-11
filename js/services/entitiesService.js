@@ -103,7 +103,8 @@
 			getValueOperation : getValueOperation,
 			getAllColumns : getAllColumns,
 			setValueOperation : setValueOperation,
-			setFilters: setFilters
+			setFilters: setFilters,
+			setDateFilter: setDateFilter
 		};
 		return service;
 
@@ -166,6 +167,10 @@
 
 		function setFilters(filter){
 			service.definition.filters = filter;
+		}
+
+		function setDateFilter(dateFiler){
+			service.dateFiler = dateFiler;
 		}
 
 

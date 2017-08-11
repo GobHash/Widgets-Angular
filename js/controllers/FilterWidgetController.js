@@ -28,20 +28,29 @@
             operation: null,
             value: null
         }
+        vm.dateFilter = vm.definition.dateFilter;
 
         getFiltersOperationsType();
         getAllColumns();
         getDateOperationFilters();
 
+        //StartDate
         vm.dpOpen = false;
         vm.dpFormat = 'dd/MM/yy';
         vm.dpOptions = {
             datepickerMode: 'day',
             minMode: 'day'
         }
-        var today = new Date();
-        vm.cardExpires = new Date(today.getFullYear(), today.getMonth(), today.getDay(), null, null, null, null);
-
+        
+        //EndDate
+        vm.dpeOpen = false;
+        vm.dpeFormat = 'dd/MM/yy';
+        vm.dpeOptions = {
+            datepickerMode: 'day',
+            minMode: 'day'
+        }
+        
+        //Functions
         vm.stepFour = stepFour;
         vm.stepTree = stepTree;
         vm.addFilter = addFilter;
@@ -49,11 +58,13 @@
 
         function stepFour(){
             setFilters();
+            setDateFilter();
             $state.go('widgetPreview');
         };
         function stepTree(){
             setFilters();
-            $state.go('widgetEntity')
+            setDateFilter();
+            $state.go('widgetEntity');
         }
 
         function getFiltersOperationsType(){
@@ -87,6 +98,11 @@
             FilterService.setFilters(vm.filters);
             vm.definition.filters = vm.filters;
             EntitiesService.setFilters(vm.filters);
+        }
+
+        function setDateFilter(){
+            vm.definition.dateFilter = vm.dateFilter;
+            EntitiesService.setDateFilter(vm.dateFilter);
         }
 
         function getDateOperationFilters(){

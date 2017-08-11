@@ -27,6 +27,13 @@
             [65, 59, 80, 81, 56, 55, 40],
             [28, 48, 40, 19, 86, 27, 90]
         ];
+
+        vm.stateBack = stateBack;
+
+        function stateBack(){
+            $state.go('widgetFilter');
+        }
+
         
     }
     

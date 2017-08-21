@@ -51,12 +51,21 @@
         }
 
         function getAllColumns(){
-            vm.allColumns = EntitiesService.getAllColumns();
+            EntitiesService.getAllColumns().then(function(data){
+                vm.allColumns = data;
+            }).catch(function(err){
+                console.log(err);
+            })
         }
 
         function getColumnsByEntity(){
             if(vm.definition.entity != null){
-                vm.columns = EntitiesService.getColumnsByEntity(vm.definition.entity.name);
+                EntitiesService.getColumnsByEntity(vm.definition.entity.id)
+                .then(function(data){
+                    vm.columns = data;
+                }).catch(function(err){
+                    console.log(err);
+                });
             }
             else{
                 vm.columns = {};

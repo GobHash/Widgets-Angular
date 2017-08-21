@@ -124,16 +124,21 @@
 		}
 
 		function getColumnsByEntity(entity) {
-			var columns = [];
+			
+			/*var columns = [];
 			for(var i=0; i<service.entityColumns.length; i++){
 				var element = service.entityColumns[i];
 				if(element.entity == entity){
 					columns.push(element);
 				}
 				
-			}
-			return columns;
-			
+			}*/
+
+			return EntitiesRepository.getColumnsByEntity(entity).then(function(data){
+				return data;
+			}).catch(function(err){
+				console.log(err);
+			})
 		}
 
 		function getDefinition(){
@@ -158,7 +163,11 @@
 		}
 
 		function getAllColumns(){
-			return service.entityColumns;
+			return EntitiesRepository.getColumns().then(function(data){
+				return data;
+			}).catch(function(err){
+				console.log(err);
+			})
 		}
 
 		function setValueOperation(value){

@@ -72,7 +72,11 @@
         }
 
         function getAllColumns(){
-            vm.allColumns =  EntitiesService.getAllColumns();
+            EntitiesService.getAllColumns().then(function(data){
+                vm.allColumns =  data;
+            }).catch(function(err){
+                console.log(err);
+            })
         }
 
         function addFilter(){

@@ -5,7 +5,7 @@
     <h4 class="modal-title" id="exampleModalLabel">Categorizacion y Valoracion</h4>
 </div>
 <div class="modal-body">
-    <form>
+    <form name="vmWidgetData.Form">
     <div class="form-group">
         <label for="recipient-name">Entidades</label>
         <select class="form-control" ng-model="vmWidgetData.definition.entity" ng-options="item as item.name for item in vmWidgetData.entitiesType track by item.id" ng-change="vmWidgetData.getColumnsByEntity()" ng-required="true" >						

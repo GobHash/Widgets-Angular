@@ -31,9 +31,14 @@
             vm.widgetsType = EntitiesService.getWidgets();
         }
         function stepTwo(){
-            setDefinition();
-            console.log(vm.definition);
-            $state.go('widgetEntity');
+            if(vm.indexForm.$valid){
+                setDefinition();
+                console.log(vm.definition);
+                $state.go('widgetEntity');
+            }
+            else{
+                vm.alert = "Por favor complete los campos necesarios"
+            }
         }
 
         function setDefinition(){

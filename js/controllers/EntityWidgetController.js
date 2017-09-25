@@ -24,6 +24,7 @@
         vm.selectValueOp = null;
         
         getEntitites();
+        getColumnsByEntity();
         getValueOperation();
         getAllColumns();
         
@@ -60,15 +61,12 @@
 
         function getColumnsByEntity(){
             if(vm.definition.entity != null){
-                EntitiesService.getColumnsByEntity(vm.definition.entity.id)
-                .then(function(data){
-                    vm.columns = data;
-                }).catch(function(err){
-                    console.log(err);
-                });
-            }
-            else{
-                vm.columns = {};
+                vm.columns = EntitiesService.getColumnsByEntity(vm.definition.entity.id)
+                    .then(function(data){
+                        vm.columns = data;
+                    }).catch(function(err){
+                        console.log(err);
+                    });
             }
         }
 
@@ -81,6 +79,10 @@
         }
 
         function backStepOne(){
+            setEntityInDefinition();
+            setBaseColumnInDefinition();
+            setValueOperation();
+            console.log(vm.columns);
             $state.go('widgetIndex');
         }
         function setValueOperation(){
@@ -88,10 +90,16 @@
         }
 
         function stepTree(){
-            setEntityInDefinition();
-            setBaseColumnInDefinition();
-            setValueOperation();
-            $state.go('widgetFilter');
+            if(vm.dataForm.$valid){
+                setEntityInDefinition();
+                setBaseColumnInDefinition();
+                setValueOperation();
+                $state.go('widgetFilter');
+            }
+            else{
+                vm.alert = "Por favor complete los campos necesarios";
+            }
+            
         }
         console.log(vm.definition);
 

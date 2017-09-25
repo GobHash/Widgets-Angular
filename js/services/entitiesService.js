@@ -135,6 +135,7 @@
 			}*/
 
 			return EntitiesRepository.getColumnsByEntity(entity).then(function(data){
+				console.log(data)
 				return data;
 			}).catch(function(err){
 				console.log(err);

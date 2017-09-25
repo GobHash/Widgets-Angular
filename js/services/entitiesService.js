@@ -5,9 +5,9 @@
 	.module('Widgets')
 	.factory('EntitiesService', EntitiesService);
 
-	EntitiesService.$inject = ['$http', 'EntitiesRepository'];
+	EntitiesService.$inject = ['$http', 'EntitiesRepository', 'OperationRepository'];
 
-	function EntitiesService($http, EntitiesRepository){
+	function EntitiesService($http, EntitiesRepository, OperationRepository){
 		var definition = {
 			name : null,
 			widgetType : null,
@@ -15,7 +15,10 @@
 			filters : null,
 			dateFilter: null,
 			baseColumn : null,
-			value:{}
+			category:{
+				operation:{},
+				column:{}
+			}
 		}
 		var valueOperation = [
 			{
@@ -46,7 +49,7 @@
 			{id: 2, name: 'Grafico de Barras'},
 			{id: 3, name: 'Grafico de Lineas'}
 		];
-
+		/*
 		var entityColumns = [
 	
 			{id:1, name:"Nombre del Comprador", type: "string", entity:"Comprador"},
@@ -86,14 +89,13 @@
 
 			
 		];
-
+		*/
 		var service = {
 			getEntities: getEntities,
 			getWidgets : getWidgets,
 			getColumnsByEntity : getColumnsByEntity,
 			entities : entities,
 			widgetsType : widgetsType,
-			entityColumns : entityColumns,
 			definition : definition,
 			getDefinition : getDefinition,
 			setBasicDefinition : setBasicDefinition,
@@ -102,9 +104,10 @@
 			valueOperation : valueOperation,
 			getValueOperation : getValueOperation,
 			getAllColumns : getAllColumns,
-			setValueOperation : setValueOperation,
+			setCategory : setCategory,
 			setFilters: setFilters,
-			setDateFilter: setDateFilter
+			setDateFilter: setDateFilter,
+			getOperationsByType : getOperationsByType
 		};
 		return service;
 
@@ -171,8 +174,9 @@
 			})
 		}
 
-		function setValueOperation(value){
-			service.definition.value = value;
+		function setCategory(operation, column){
+			service.definition.category.operation = operation;
+			service.definition.category.column = column;
 		}
 
 		function setFilters(filter){
@@ -183,6 +187,15 @@
 			service.dateFiler = dateFiler;
 		}
 
+		function getOperationsByType (type){
+			return OperationRepository.getOperationsByOperationType(type)
+				.then(function(data){
+					console.log(data);
+					return data;
+				}).catch(function(err){
+					console.log(err);
+				});
+		}
 
 	}
 })();

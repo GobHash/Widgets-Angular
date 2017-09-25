@@ -25,6 +25,7 @@
         
         getEntitites();
         getColumnsByEntity();
+        getOperationsByType();
         getValueOperation();
         getAllColumns();
         
@@ -81,25 +82,33 @@
         function backStepOne(){
             setEntityInDefinition();
             setBaseColumnInDefinition();
-            setValueOperation();
+            setCategory();
             console.log(vm.columns);
             $state.go('widgetIndex');
         }
-        function setValueOperation(){
-            EntitiesService.setValueOperation(vm.selectValueOp);
+        function setCategory(){
+            EntitiesService.setCategory(vm.selectValueOp, vm.valueColumn);
         }
 
         function stepTree(){
             if(vm.dataForm.$valid){
                 setEntityInDefinition();
                 setBaseColumnInDefinition();
-                setValueOperation();
+                setCategory();
+                console.log(vm.definition);
                 $state.go('widgetFilter');
             }
             else{
                 vm.alert = "Por favor complete los campos necesarios";
             }
             
+        }
+        function getOperationsByType(){
+            EntitiesService.getOperationsByType(1).then(function(data){
+                console.log(data);
+            }).catch(function(err){
+                console.log(err);
+            });
         }
         console.log(vm.definition);
 

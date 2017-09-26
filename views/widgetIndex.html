@@ -1,7 +1,7 @@
 
 <div class="modal-header">
     <button type="button" ui-sref="createWidget" class="close" ui-sref="createWidget">&times;</button>
-    <h4 class="modal-title" id="exampleModalLabel">Creando Widget</h4>
+    <h4 class="modal-title" id="exampleModalLabel">Creando Gráfico</h4>
 </div>
 <form name="vmWidgetIndex.indexForm" ng-submit="vmWidgetIndex.stepTwo()" novalidate>
     <div class="modal-body">
@@ -12,7 +12,7 @@
                 <p ng-show="(vmWidgetIndex.indexForm.$submitted && vmWidgetIndex.indexForm.name.$untouched) || (vmWidgetIndex.indexForm.name.$invalid && !vmWidgetIndex.indexForm.name.$pristine)" class="help-block">Por favor ingrese un titulo</p>
             </div>
             <div class="form-group" ng-class="{ 'has-error' : (vmWidgetIndex.indexForm.$submitted && vmWidgetIndex.indexForm.graph.$untouched)  || (vmWidgetIndex.indexForm.graph.$invalid && !vmWidgetIndex.indexForm.graph.$pristine) }">
-                <label for="recipient-name">Tipo de Grafico</label>
+                <label for="recipient-name">Tipo de Gráfico</label>
                 <select class="form-control" name="graph" ng-model="vmWidgetIndex.definition.widgetType" ng-options="item as item.name for item in vmWidgetIndex.widgetsType track by item.id"  ng-required="true" >						
                 </select>
                 <p ng-show="(vmWidgetIndex.indexForm.$submitted && vmWidgetIndex.indexForm.graph.$untouched)  || (vmWidgetIndex.indexForm.graph.$invalid && !vmWidgetIndex.indexForm.graph.$pristine)" class="help-block">Por favor seleccione un tipo de grafica</p>

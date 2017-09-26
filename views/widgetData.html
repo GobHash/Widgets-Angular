@@ -2,7 +2,7 @@
 
 <div class="modal-header">
     <button type="button" ui-sref="createWidget" class="close" data-dismiss="modal">&times;</button>
-    <h4 class="modal-title" id="exampleModalLabel">Categorizacion y Valoracion</h4>
+    <h4 class="modal-title" id="exampleModalLabel">Categorización y Valoración</h4>
 </div>
 <form name="vmWidgetData.dataForm" ng-submit="vmWidgetData.stepTree()">
     <div class="modal-body">
@@ -16,7 +16,7 @@
         <div class="form-group" ng-if="vmWidgetData.definition.entity != null" 
             ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine) }">
             
-            <label for="recipient-name">Categoria</label>
+            <label for="recipient-name">Categoría</label>
             <select class="form-control" name="category" ng-model="vmWidgetData.definition.baseColumn" ng-options="item as item.name for item in vmWidgetData.columns track by item.id"  ng-required="true" >
             </select>
             <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine)" class="help-block">Por favor seleccione una categoria</p>
@@ -24,18 +24,18 @@
 
         <div class="form-group" ng-if="vmWidgetData.definition.baseColumn != null && vmWidgetData.definition.entity.name == 'Adjudicacion'">
             
-            <label for="recipient-name">Operacion y campo para calcular</label>
+            <label for="recipient-name">Operación y campo para calcular</label>
             
             <div class="row">
                 
                 <div class="col-8 col-sm-6">  
                     <select class="form-control " placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.operation for item in vmWidgetData.valueOperation track by item.id" >
-                        <option value="" disabled selected>Selecciones una operacion</option>
+                        <option value="" disabled selected>Seleccione una Operación</option>
                     </select>
                 </div>
                 <div class="col-8 col-sm-6">
                     <select class="form-control" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.name for item in vmWidgetData.allColumns track by item.id">
-                        <option value="" disabled selected>Selecciones una Columna</option>
+                        <option value="" disabled selected>Seleccione una Columna</option>
                     </select>
                 </div>
             </div>

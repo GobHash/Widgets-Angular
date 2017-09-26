@@ -45,9 +45,9 @@
 		];
 
 		var widgetsType = [
-			{id: 1, name: 'Pie Chart'},
-			{id: 2, name: 'Grafico de Barras'},
-			{id: 3, name: 'Grafico de Lineas'}
+			{id: 1, name: 'Gráfico de Pie'},
+			{id: 2, name: 'Gráfico de Barras'},
+			{id: 3, name: 'Gráfico de Lineas'}
 		];
 		/*
 		var entityColumns = [

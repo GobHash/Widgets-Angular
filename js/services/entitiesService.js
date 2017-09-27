@@ -47,7 +47,7 @@
 		var widgetsType = [
 			{id: 1, name: 'Gráfico de Pie'},
 			{id: 2, name: 'Gráfico de Barras'},
-			{id: 3, name: 'Gráfico de Lineas'}
+			{id: 3, name: 'Gráfico de Líneas'}
 		];
 		/*
 		var entityColumns = [
@@ -107,7 +107,8 @@
 			setCategory : setCategory,
 			setFilters: setFilters,
 			setDateFilter: setDateFilter,
-			getOperationsByType : getOperationsByType
+			getOperationsByType : getOperationsByType,
+			setDefinition : setDefinition
 		};
 		return service;
 
@@ -195,6 +196,10 @@
 				}).catch(function(err){
 					console.log(err);
 				});
+		}
+
+		function setDefinition(definition){
+			vm.definition = definition;
 		}
 
 	}

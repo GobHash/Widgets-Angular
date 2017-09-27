@@ -55,6 +55,7 @@
         vm.stepTree = stepTree;
         vm.addFilter = addFilter;
         vm.deleteFilter = deleteFilter;
+        vm.reset = reset;
 
         function stepFour(){
             setFilters();
@@ -86,8 +87,13 @@
                     operation: null,
                     value: null
                 }
-            )
-            
+            )   
+        }
+
+        function reset(){
+            vm.definition = {};
+            EntitiesService.setDefinition(vm.definition);
+            $state.go("createWidget");
         }
 
         function deleteFilter(filter){

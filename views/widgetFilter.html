@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="recipient-name">Filto por Fecha</label>
+        <label for="recipient-name">Filtro por Fecha</label>
         <div class="row">
             <div class="col col-lg-1" ng-if="vmWidgetFilter.dateFilter.operation.operation == 'Entre' ">
                 <span class="input-group-btn">
@@ -86,8 +86,8 @@
 </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default btn-next" ng-click="vmWidgetFilter.stepTree()">Atras</button>
-    <button type="button" class="btn btn-default btn-next" ng-click="vmWidgetFilter.stepFour()">Preview</button>
-    <button type="button" class="btn btn-default btn-next" ui-sref="createWidget" >Close</button>
-
+    <button type="button" class="btn btn-default btn-next pull-left" ng-click="vmWidgetFilter.stepTree()">Atrás</button>
+    <button type="button" class="btn btn-default btn-next pull-rigth" ng-click="vmWidgetFilter.stepFour()">Previsualización</button>
+    <button type="button" class="btn btn-default btn-next pull-left" ng-click="vmWidgetFilter.reset()" >Cerrar</button>
+    <button type="button" class="btn btn-default btn-next pull-rigth" ui-sref="createWidget" >Finalizar</button>
 </div>

@@ -57,7 +57,7 @@
 
 		var WidgetState = {
 			name: 'createWidget',
-			url: 'createWidget',
+			url: '/createWidget',
 			component: 'Widget'
 		}
 

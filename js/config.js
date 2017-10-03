@@ -67,12 +67,13 @@
 			'createWidget',
 			{}
 			);
-   //      registerStatefulModal(
-			// 'widgetEntity',//Nombre del estado
-			// 'widgetEntity',//Componente
-			// 'widgetIndex',//Papa
-			// {}
-			// );
+        registerStatefulModal(
+			'widgetEntity',//Nombre del estado
+			'EntityWidgetController',
+			'js/WidgetModule/views/widgetData.html',//Componente
+			'widgetIndex',//Papa
+			{}
+			);
    //      registerStatefulModal(
 			// 'widgetFilter',//Nombre del estado
 			// 'widgetFilter',//Componente

@@ -69,23 +69,25 @@
 			);
         registerStatefulModal(
 			'widgetEntity',//Nombre del estado
-			'EntityWidgetController',
-			'js/WidgetModule/views/widgetData.html',//Componente
+			'EntityWidgetController',//Controlador
+			'js/WidgetModule/views/widgetData.html',//Template
 			'widgetIndex',//Papa
 			{}
 			);
-   //      registerStatefulModal(
-			// 'widgetFilter',//Nombre del estado
-			// 'widgetFilter',//Componente
-			// 'widgetEntity',//Papa
-			// {}
-			// );
-   //      registerStatefulModal(
-			// 'widgetPreview',//Nombre del estado
-			// 'widgetPreview',//Componente
-			// 'widgetFilter',//Papa
-			// {}
-			// );
+        registerStatefulModal(
+			'widgetFilter',//Nombre del estado
+			'FilterWidgetController',//Controller
+			'js/WidgetModule/views/widgetFilter.html', //Template
+			'widgetEntity',//Papa
+			{}
+			);
+        registerStatefulModal(
+			'widgetPreview',//Nombre del estado
+			'PreviewWidgetController',//Controller
+			'js/WidgetModule/views/widgetPreview.html', //Template
+			'widgetFilter',//Papa
+			{}
+			);
 
         
 	}

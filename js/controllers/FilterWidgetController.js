@@ -4,7 +4,7 @@
     angular.module("Widgets")
         .controller("FilterWidgetController", filterWidgetController)
         .component("widgetFilter", {
-            templateUrl: "/views/widgetFilter.html",
+            templateUrl: "js/WidgetModule/views/widgetFilter.html",
             controller: "FilterWidgetController",
             controllerAs: "vmWidgetFilter"
         });

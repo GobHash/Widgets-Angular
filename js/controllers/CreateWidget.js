@@ -4,7 +4,8 @@
     angular.module("Widgets")
         .controller("CreateWidgetController", createWidgetController)
         .component("widgetIndex", {
-            templateUrl: "/views/widgetIndex.html",
+            // templateUrl: "js/WidgetModule/views/widgetIndex.html",
+            template: "<div>Test</div>",
             controller: "CreateWidgetController",
             controllerAs: "vmWidgetIndex"
         });

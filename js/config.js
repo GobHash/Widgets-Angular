@@ -6,7 +6,7 @@
 
 
 	function config($stateProvider, $urlRouterProvider) {
-		var registerStatefulModal = function (stateName, controller, template, parent, params, size, resolves) {
+		var registerStatefulModal = function (stateName, controller, controllerAs, template, parent, params, size, resolves) {
             params = params || {};
             resolves = resolves || angular.extend({}, resolves, { stateParams: ["$stateParams", function ($stateParams) { return $stateParams; }] });
             size = size || "md";
@@ -23,7 +23,8 @@
                     /$previousState.memo('modalInvoker');/
                     modal = $uibModal.open({
                         animation: true,
-                        controller: controller,
+						controller: controller,
+						controllerAs: controllerAs,
                         templateUrl: template,
                         backdrop: "static",
                         keyboard: false,
@@ -63,6 +64,7 @@
 		registerStatefulModal(
 			'widgetIndex',
 			'CreateWidgetController',
+			'vmWidgetIndex',
 			'js/WidgetModule/views/widgetIndex.html',
 			'createWidget',
 			{}
@@ -70,6 +72,7 @@
         registerStatefulModal(
 			'widgetEntity',//Nombre del estado
 			'EntityWidgetController',//Controlador
+			'vmWidgetData',
 			'js/WidgetModule/views/widgetData.html',//Template
 			'widgetIndex',//Papa
 			{}
@@ -77,6 +80,7 @@
         registerStatefulModal(
 			'widgetFilter',//Nombre del estado
 			'FilterWidgetController',//Controller
+			'vmWidgetFilter',
 			'js/WidgetModule/views/widgetFilter.html', //Template
 			'widgetEntity',//Papa
 			{}
@@ -84,6 +88,7 @@
         registerStatefulModal(
 			'widgetPreview',//Nombre del estado
 			'PreviewWidgetController',//Controller
+			'vmWidgetPreview',
 			'js/WidgetModule/views/widgetPreview.html', //Template
 			'widgetFilter',//Papa
 			{}

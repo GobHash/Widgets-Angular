@@ -22,7 +22,7 @@
             <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine)" class="help-block">Por favor seleccione una categoria</p>
         </div>
 
-        <div class="form-group" ng-if="vmWidgetData.definition.baseColumn != null && vmWidgetData.definition.entity.name == 'Adjudicacion'">
+        <div class="form-group" ng-if="vmWidgetData.definition.baseColumn != null && vmWidgetData.definition.entity.id == 2">
             
             <label for="recipient-name">Operación y campo para calcular</label>
             

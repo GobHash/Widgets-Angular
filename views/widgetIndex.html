@@ -6,10 +6,10 @@
 <form name="vmWidgetIndex.indexForm" ng-submit="vmWidgetIndex.stepTwo()" novalidate>
     <div class="modal-body">
         
-            <div class="form-group" ng-class="{ 'has-error' : (vmWidgetIndex.indexForm.$submitted && (vmWidgetData.dataForm.name.$untouched || vmWidgetData.dataForm.name.$invalid))  || ( vmWidgetIndex.indexForm.name.$invalid && !vmWidgetIndex.indexForm.name.$pristine ) }">
+            <div class="form-group" ng-class="{ 'has-error' : (vmWidgetIndex.indexForm.$submitted && (vmWidgetIndex.indexForm.name.$untouched || vmWidgetIndex.indexForm.name.$invalid))  || ( vmWidgetIndex.indexForm.name.$invalid && !vmWidgetIndex.indexForm.name.$pristine ) }">
                 <label for="message-text" class="form-control-label">Titulo</label>
                 <input type="text" class="form-control" id="widget-name" name="name" ng-model="vmWidgetIndex.definition.name" ng-required="true"></input>
-                <p ng-show="(vmWidgetIndex.indexForm.$submitted && (vmWidgetData.dataForm.name.$untouched || vmWidgetData.dataForm.name.$invalid))  || ( vmWidgetIndex.indexForm.name.$invalid && !vmWidgetIndex.indexForm.name.$pristine )" class="help-block">Por favor ingrese un titulo</p>
+                <p ng-show="(vmWidgetIndex.indexForm.$submitted && (vmWidgetIndex.indexForm.name.$untouched || vmWidgetIndex.indexForm.name.$invalid))  || ( vmWidgetIndex.indexForm.name.$invalid && !vmWidgetIndex.indexForm.name.$pristine )" class="help-block">Por favor ingrese un titulo</p>
             </div>
             <div class="form-group" ng-class="{ 'has-error' : (vmWidgetIndex.indexForm.$submitted && (vmWidgetIndex.indexForm.graph.$untouched || vmWidgetIndex.indexForm.graph.$invalid))  || (vmWidgetIndex.indexForm.graph.$invalid && !vmWidgetIndex.indexForm.graph.$pristine) }">
                 <label for="recipient-name">Tipo de Gráfico</label>

@@ -20,7 +20,7 @@
             return $http({
 
                 "method": "GET", 
-                "url": "http://localhost:3000/v1/entity/getEntities",
+                "url": "https://api-dev.gobhash.com/v1/entity/entities",
                 "data" : {},
                 "params" : {
                 },
@@ -39,7 +39,7 @@
             return $http({
 
                 "method": "GET", 
-                "url": "http://localhost:3000/v1/column/getColumnByEntity/" + id,
+                "url": "https://api-dev.gobhash.com/v1/column/columns/" + id,
                 "data" : {
                 },
                 "params" : {
@@ -59,7 +59,7 @@
             return $http({
 
                 "method": "GET", 
-                "url": "http://localhost:3000/v1/column/getColumns",
+                "url": "https://api-dev.gobhash.com/v1/column/columns",
                 "data" : {},
                 "params" : {},
                 "headers": {

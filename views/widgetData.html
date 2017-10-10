@@ -9,7 +9,7 @@
         
         <div class="form-group" ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.entity.$untouched || vmWidgetData.dataForm.entity.$invalid))  || (vmWidgetData.dataForm.entity.$invalid && !vmWidgetData.dataForm.entity.$pristine) }">
             <label for="recipient-name">Entidades</label>
-            <select name="entity" class="form-control" ng-model="vmWidgetData.definition.entity" ng-options="item as item.name for item in vmWidgetData.entitiesType track by item.id" ng-change="vmWidgetData.getColumnsByEntity()" ng-required="true" >						
+            <select name="entity" class="form-control" ng-model="vmWidgetData.definition.entity" ng-options="item as item.display_name for item in vmWidgetData.entitiesType track by item.id" ng-change="vmWidgetData.getColumnsByEntity()" ng-required="true" >						
             </select>
             <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.entity.$untouched || vmWidgetData.dataForm.entity.$invalid))  || (vmWidgetData.dataForm.entity.$invalid && !vmWidgetData.dataForm.entity.$pristine)" class="help-block">Por favor seleccione una entidad</p>
         </div>
@@ -22,7 +22,7 @@
             <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine)" class="help-block">Por favor seleccione una categoria</p>
         </div>
 
-        <div class="form-group" ng-if="vmWidgetData.definition.baseColumn != null && vmWidgetData.definition.entity.name == 'Adjudicacion'">
+        <div class="form-group" ng-if="vmWidgetData.definition.baseColumn != null && vmWidgetData.definition.entity.id == 2">
             
             <label for="recipient-name">Operación y campo para calcular</label>
             

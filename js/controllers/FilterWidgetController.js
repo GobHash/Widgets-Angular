@@ -33,6 +33,7 @@
         getFiltersOperationsType();
         getAllColumns();
         getDateOperationFilters();
+        getColumnsForFilters();
 
         //StartDate
         vm.dpOpen = false;
@@ -117,6 +118,10 @@
 
         function getDateOperationFilters(){
             vm.dateOperationFilter = FilterService.getDateOperationFilters();
+        }
+
+        function getColumnsForFilters(){
+            vm.filterColumns = EntitiesService.getColumnsForFilters()
         }
 
     }

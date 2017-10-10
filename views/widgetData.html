@@ -17,7 +17,7 @@
             ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine) }">
             
             <label for="recipient-name">Categoría</label>
-            <select class="form-control" name="category" ng-model="vmWidgetData.definition.baseColumn" ng-options="item as item.name for item in vmWidgetData.columns track by item.id"  ng-required="true" >
+            <select class="form-control" name="category" ng-model="vmWidgetData.definition.baseColumn" ng-options="item as item.display_name for item in vmWidgetData.columns track by item.id"  ng-required="true" >
             </select>
             <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine)" class="help-block">Por favor seleccione una categoria</p>
         </div>
@@ -34,7 +34,7 @@
                     </select>
                 </div>
                 <div class="col-8 col-sm-6">
-                    <select class="form-control" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.name for item in vmWidgetData.allColumns track by item.id">
+                    <select class="form-control" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.display_name for item in vmWidgetData.allColumns track by item.id">
                         <option value="" disabled selected>Seleccione una Columna</option>
                     </select>
                 </div>

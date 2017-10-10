@@ -10,7 +10,7 @@
         
         <div class="row filter" ng-repeat="filter in vmWidgetFilter.filters">
             <div class="col-8 col-sm-4">
-                <select class="form-control" id="widget-entities" ng-model="filter.column" ng-options="item as item.name for item in vmWidgetFilter.allColumns track by item.id"  ng-required="true">
+                <select class="form-control" id="widget-entities" ng-model="filter.column" ng-options="item as item.display_name for item in vmWidgetFilter.filterColumns track by item.id"  ng-required="true">
                 </select>
             </div>
             <div class="col-8 col-sm-2">

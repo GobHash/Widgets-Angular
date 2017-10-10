@@ -49,6 +49,7 @@
 			{id: 2, name: 'Gráfico de Barras'},
 			{id: 3, name: 'Gráfico de Líneas'}
 		];
+		var columns = [];
 		/*
 		var entityColumns = [
 	
@@ -108,7 +109,9 @@
 			setFilters: setFilters,
 			setDateFilter: setDateFilter,
 			getOperationsByType : getOperationsByType,
-			setDefinition : setDefinition
+			setDefinition : setDefinition,
+			columns : columns,
+			getColumnsForFilters : getColumnsForFilters
 		};
 		return service;
 
@@ -116,13 +119,13 @@
 		function getEntities() {
 			return EntitiesRepository.getEntities().then(function(data){
 				service.entities = data;
-				var entities = []
+				var entities = [];
 				data.forEach(function(item, index){
 					if(item.visible){
 						entities.push(item);
 					}
-				})
-				return entities
+				});
+				return entities;
 			}).catch(function(err){
 				console.log(err);
 			})
@@ -175,6 +178,7 @@
 
 		function getAllColumns(){
 			return EntitiesRepository.getColumns().then(function(data){
+				service.columns = data;
 				return data;
 			}).catch(function(err){
 				console.log(err);
@@ -206,6 +210,17 @@
 
 		function setDefinition(definition){
 			vm.definition = definition;
+		}
+
+		function getColumnsForFilters(){
+			var columns = [];
+			service.columns.forEach(function(item, index){
+				if(item.second_table != "dim_fecha"){
+					columns.push(item);
+				}
+			});
+			return columns;
+
 		}
 
 	}

@@ -116,7 +116,13 @@
 		function getEntities() {
 			return EntitiesRepository.getEntities().then(function(data){
 				service.entities = data;
-				return data
+				var entities = []
+				data.forEach(function(item, index){
+					if(item.visible){
+						entities.push(item);
+					}
+				})
+				return entities
 			}).catch(function(err){
 				console.log(err);
 			})

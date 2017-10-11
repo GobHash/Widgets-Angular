@@ -11,7 +11,8 @@
         var repository = {
             getEntities: getEntities,
             getColumnsByEntity: getColumnsByEntity,
-            getColumns: getColumns
+            getColumns: getColumns,
+            getPreviewData : getPreviewData
         };
 
         return repository;
@@ -78,9 +79,7 @@
 
                 "method": "POST", 
                 "url": "http://localhost:3000/v1/widgets/preview",
-                "data" : {
-                    "definition": definition
-                },
+                "data" : definition,
                 "params" : {},
                 "headers": {
                 }

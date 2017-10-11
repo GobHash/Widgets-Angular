@@ -69,7 +69,14 @@
             setFilters();
             setDateFilter();
             console.log(vm.definition);
-            $state.go('widgetPreview');
+            EntitiesService.getPreviewData().then(function(data){
+                console.log("RESPONSE POST")
+                console.log(data)
+            }).catch(function(err){
+                console.log(err)
+            }).finally(function(){
+                $state.go('widgetPreview');
+            });
         };
         function stepTree(){
             setFilters();

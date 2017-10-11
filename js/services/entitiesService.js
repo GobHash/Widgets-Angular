@@ -113,7 +113,8 @@
 			columns : columns,
 			getColumnsForFilters : getColumnsForFilters,
 			getOperationsByColumnType : getOperationsByColumnType,
-			getColumnsForDateFilters : getColumnsForDateFilters
+			getColumnsForDateFilters : getColumnsForDateFilters,
+			getPreviewData : getPreviewData
 		};
 		return service;
 
@@ -243,6 +244,14 @@
 				}
 			});
 			return columns;
+		}
+
+		function getPreviewData(){
+			return EntitiesRepository.getPreviewData(service.definition).then(function(data){
+				return data;
+			}).catch(function(err){
+				return err;
+			});
 		}
 
 	}

@@ -5,14 +5,23 @@
 	.module('Widgets')
 	.factory('FilterService', FilterService);
 
-	FilterService.$inject = ['$http'];
+	FilterService.$inject = ['$http', 'OperationRepository'];
 
-	function FilterService($http){
+	function FilterService($http, OperationRepository){
         var filters = [
             {
                 column: null,
                 operation: null,
                 value: null
+            }
+        ];
+
+        var dateFilters = [
+            {
+                column: null,
+                operation: null,
+                date1: null,
+                date2: null
             }
         ];
 
@@ -24,13 +33,17 @@
         ];
         var service = {
             filters : filters,
+            dateFilters : dateFilters,
             filterOperationsType: filterOperationsType,
             getFilters: getFilters,
+            getDateFilters: getDateFilters,
             setFilters: setFilters,
+            setDateFilters : setDateFilters,
             getFilterOperationsType : getFilterOperationsType,
             dateFilter: dateFilter,
             getDateOperationFilters: getDateOperationFilters,
-            dateOperationsFilters: dateOperationsFilters
+            dateOperationsFilters: dateOperationsFilters,
+            getFilterOperationsByType : getFilterOperationsByType
         }
         return service;
 
@@ -38,8 +51,16 @@
             return service.filters;
         }
 
+        function getDateFilters(){
+            return service.dateFilters;
+        }
+
         function setFilters(listOfFilters){
             service.filters = listOfFilters;
+        }
+
+        function setDateFilters(listFilters){
+            service.dateFilters = listFilters;
         }
 
         function getFilterOperationsType(){
@@ -93,6 +114,15 @@
                 }
             ]
             return service.dateOperationsFilters;
+        }
+
+        function getFilterOperationsByType(type){
+            return OperationRepository.getOperationsByOperationType(type)
+            .then(function(data){
+                return data;
+            }).catch(function(err){
+                return err;
+            });
         }
     }
 })();

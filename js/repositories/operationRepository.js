@@ -9,7 +9,8 @@
 
 	function OperationRepository($http){
         var repository = {
-            getOperationsByOperationType: getOperationsByOperationType
+            getOperationsByOperationType: getOperationsByOperationType,
+            getAllOperations : getAllOperations
         };
 
         return repository;
@@ -18,7 +19,26 @@
             return $http({
 
                 "method": "GET", 
-                "url": "http://localhost:3000/v1/operations/type/" + operationType,
+                "url": "https://api-dev.gobhash.com/v1/operations/type/" + operationType,
+                "data" : {},
+                "params" : {
+                },
+                "headers": {
+                }
+            }).then(function (response) {
+                return response.data;
+            })
+            .catch(function (err) {
+                console.log(err);
+                return err;
+            });
+        }
+
+        function getAllOperations(){
+            return $http({
+
+                "method": "GET", 
+                "url": "https://api-dev.gobhash.com/v1/operations/operations",
                 "data" : {},
                 "params" : {
                 },

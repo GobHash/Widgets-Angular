@@ -13,7 +13,7 @@
 			widgetType : null,
 			entity : null,
 			filters : null,
-			dateFilter: null,
+			dateFilters: null,
 			baseColumn : null,
 			category:{
 				operation:{},
@@ -107,11 +107,13 @@
 			getAllColumns : getAllColumns,
 			setCategory : setCategory,
 			setFilters: setFilters,
-			setDateFilter: setDateFilter,
+			setDateFilters: setDateFilters,
 			getOperationsByType : getOperationsByType,
 			setDefinition : setDefinition,
 			columns : columns,
-			getColumnsForFilters : getColumnsForFilters
+			getColumnsForFilters : getColumnsForFilters,
+			getOperationsByColumnType : getOperationsByColumnType,
+			getColumnsForDateFilters : getColumnsForDateFilters
 		};
 		return service;
 
@@ -194,8 +196,8 @@
 			service.definition.filters = filter;
 		}
 
-		function setDateFilter(dateFiler){
-			service.dateFiler = dateFiler;
+		function setDateFilters(filers){
+			service.definition.dateFilters = filers;
 		}
 
 		function getOperationsByType (type){
@@ -221,6 +223,26 @@
 			});
 			return columns;
 
+		}
+
+		function getOperationsByColumnType(operations, type){
+			var operationsByType = [];
+			operations.forEach(function(item, index){
+				if(item.value_type == type){
+					operationsByType.push(item);
+				}
+			});
+			return operationsByType;
+		}
+
+		function getColumnsForDateFilters(){
+			var columns = [];
+			service.columns.forEach(function(item, index){
+				if(item.second_table == "dim_fecha"){
+					columns.push(item);
+				}
+			});
+			return columns;
 		}
 
 	}

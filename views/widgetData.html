@@ -24,20 +24,20 @@
 
         <div class="form-group" ng-if="vmWidgetData.definition.baseColumn != null && vmWidgetData.definition.entity.id == 2">
             
-            <label for="recipient-name">Operación y campo para calcular</label>
+            <label for="recipient-name">Seleccione una columna y una operacion</label>
             
             <div class="row">
-                
-                <div class="col-8 col-sm-6">  
-                    <select class="form-control " placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.operation for item in vmWidgetData.valueOperation track by item.id" >
-                        <option value="" disabled selected>Seleccione una Operación</option>
-                    </select>
-                </div>
                 <div class="col-8 col-sm-6">
-                    <select class="form-control" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.display_name for item in vmWidgetData.allColumns track by item.id">
+                    <select ng-change="vmWidgetData.getOperationsByColumnType(vmWidgetData.valueColumn.type)" class="form-control" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.display_name for item in vmWidgetData.operationColumns track by item.id">
                         <option value="" disabled selected>Seleccione una Columna</option>
                     </select>
                 </div>
+                <div class="col-8 col-sm-6">  
+                    <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.operationsByType track by item.id" >
+                        <option value="" disabled selected>Seleccione una Operación</option>
+                    </select>
+                </div>
+                
             </div>
             
         </div>  

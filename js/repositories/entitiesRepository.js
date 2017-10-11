@@ -72,6 +72,26 @@
                 return err;
             });
         }
+
+        function getPreviewData(definition){
+            return $http({
+
+                "method": "POST", 
+                "url": "http://localhost:3000/v1/widgets/preview",
+                "data" : {
+                    "definition": definition
+                },
+                "params" : {},
+                "headers": {
+                }
+            }).then(function (response) {
+                return response.data;
+            })
+            .catch(function (err) {
+                console.log(err);
+                return err;
+            });
+        }
     }
 
 })();

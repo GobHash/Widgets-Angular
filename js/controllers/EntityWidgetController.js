@@ -28,10 +28,13 @@
         getOperationsByType();
         getValueOperation();
         getAllColumns();
+        getColumsForOperations();
         
         vm.stepTree = stepTree;
         vm.backStepOne = backStepOne;
         vm.getColumnsByEntity = getColumnsByEntity;
+        vm.getOperationsByType = getOperationsByType;
+        vm.getOperationsByColumnType = getOperationsByColumnType;
         
         //getColumnsByEntity();
 
@@ -57,6 +60,8 @@
                 vm.allColumns = data;
             }).catch(function(err){
                 console.log(err);
+            }).finally(function(){
+                getColumsForOperations();
             })
         }
 
@@ -104,11 +109,20 @@
             
         }
         function getOperationsByType(){
-            EntitiesService.getOperationsByType(1).then(function(data){
-                console.log(data);
+            EntitiesService.getOperationsByType(2).then(function(data){
+                vm.operations = data;
             }).catch(function(err){
                 console.log(err);
             });
+        }
+
+        function getOperationsByColumnType(columnType){
+            vm.operationsByType = EntitiesService.getOperationsByColumnType(vm.operations, columnType)
+        }
+
+        function getColumsForOperations(){
+            vm.operationColumns = EntitiesService.getColumnsForFilters();
+            console.log(vm.operationColumns);
         }
         console.log(vm.definition);
 

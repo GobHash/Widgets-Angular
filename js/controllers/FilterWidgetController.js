@@ -28,12 +28,15 @@
             operation: null,
             value: null
         }
+        vm.dateFilters = FilterService.getDateFilters();
         vm.dateFilter = vm.definition.dateFilter;
 
         getFiltersOperationsType();
         getAllColumns();
         getDateOperationFilters();
         getColumnsForFilters();
+        getFilterOperationsByType(1);
+        getColumnsForDateFilters();
 
         //StartDate
         vm.dpOpen = false;
@@ -57,10 +60,15 @@
         vm.addFilter = addFilter;
         vm.deleteFilter = deleteFilter;
         vm.reset = reset;
+        vm.getOperationsByColumnType = getOperationsByColumnType;
+        vm.getColumnsForDateFilters = getColumnsForDateFilters;
+        vm.addDateFilter = addDateFilter;
+        vm.getFilterOperationsByType = getFilterOperationsByType;
 
         function stepFour(){
             setFilters();
             setDateFilter();
+            console.log(vm.definition);
             $state.go('widgetPreview');
         };
         function stepTree(){
@@ -88,7 +96,17 @@
                     operation: null,
                     value: null
                 }
-            )   
+            );   
+        }
+
+        function addDateFilter(){
+            vm.dateFilters.push(
+                {
+                    column: null,
+                    operation: null,
+                    value: null
+                }
+            );   
         }
 
         function reset(){
@@ -103,6 +121,13 @@
                 vm.filters.splice(i, 1);
             }
         }
+        function deleteDateFilter(filter){
+            var i = vm.filters.indexOf(filter);
+            if(i != -1) {
+                vm.dateFilters.splice(i, 1);
+            }
+        }
+        
 
         function setFilters(){
             console.log(vm.filters);
@@ -112,8 +137,10 @@
         }
 
         function setDateFilter(){
-            vm.definition.dateFilter = vm.dateFilter;
-            EntitiesService.setDateFilter(vm.dateFilter);
+            console.log(vm.dateFilters);
+            FilterService.setDateFilters(vm.dateFilters)
+            vm.definition.dateFilters = vm.dateFilters;
+            EntitiesService.setDateFilters(vm.dateFilters);
         }
 
         function getDateOperationFilters(){
@@ -122,6 +149,28 @@
 
         function getColumnsForFilters(){
             vm.filterColumns = EntitiesService.getColumnsForFilters()
+        }
+
+        function getFilterOperationsByType(type){
+            FilterService.getFilterOperationsByType(type).then(function(data){
+                vm.operations = data;
+            }).catch(function(err){
+                console.log(err);
+            }).finally(function(){
+                getOperationsForDateColumns(vm.operations, 5);
+            })
+        }
+
+        function getOperationsByColumnType(columnType){
+            vm.operationsByType = EntitiesService.getOperationsByColumnType(vm.operations, columnType)
+        }
+
+        function getColumnsForDateFilters(){
+            vm.dateColumns = EntitiesService.getColumnsForDateFilters();
+        }
+
+        function getOperationsForDateColumns(){
+            vm.operationsDate = EntitiesService.getOperationsByColumnType(vm.operations, 5)
         }
 
     }

@@ -72,6 +72,7 @@
             EntitiesService.getPreviewData().then(function(data){
                 console.log("RESPONSE POST")
                 console.log(data)
+                EntitiesService.setData(data);
             }).catch(function(err){
                 console.log(err)
             }).finally(function(){

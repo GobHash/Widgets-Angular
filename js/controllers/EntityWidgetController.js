@@ -19,6 +19,7 @@
 
     function entityWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
+        // vm.loginBlockUI = blockUI.instances.get('loginBlock');
         getDefinition();
         vm.valueColumn = null;
         vm.selectValueOp = null;
@@ -35,7 +36,8 @@
         vm.getColumnsByEntity = getColumnsByEntity;
         vm.getOperationsByType = getOperationsByType;
         vm.getOperationsByColumnType = getOperationsByColumnType;
-        
+        vm.getStringsOperations = getStringsOperations;
+        vm.getIntOperations = getIntOperations;
         //getColumnsByEntity();
 
 
@@ -111,6 +113,8 @@
         function getOperationsByType(){
             EntitiesService.getOperationsByType(2).then(function(data){
                 vm.operations = data;
+                getStringsOperations()
+                getIntOperations()
             }).catch(function(err){
                 console.log(err);
             });
@@ -123,6 +127,13 @@
         function getColumsForOperations(){
             vm.operationColumns = EntitiesService.getColumnsForFilters();
             console.log(vm.operationColumns);
+        }
+
+        function getStringsOperations(){
+            vm.stringOperations = EntitiesService.getOperationsByColumnType(vm.operations, 1);
+        }
+        function getIntOperations(){
+            vm.intOperations = EntitiesService.getOperationsByColumnType(vm.operations, 2);
         }
         console.log(vm.definition);
 

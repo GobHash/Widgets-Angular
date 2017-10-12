@@ -50,6 +50,7 @@
 			{id: 3, name: 'Gráfico de Líneas'}
 		];
 		var columns = [];
+		var widgetData = [];
 		/*
 		var entityColumns = [
 	
@@ -114,7 +115,10 @@
 			getColumnsForFilters : getColumnsForFilters,
 			getOperationsByColumnType : getOperationsByColumnType,
 			getColumnsForDateFilters : getColumnsForDateFilters,
-			getPreviewData : getPreviewData
+			getPreviewData : getPreviewData,
+			widgetData : widgetData,
+			setData : setData,
+			getData : getData
 		};
 		return service;
 
@@ -252,6 +256,23 @@
 			}).catch(function(err){
 				return err;
 			});
+		}
+
+		function setData(data){
+			service.widgetData = data;
+		}
+
+		function getData(){
+			var data = [];
+			var key = [];
+			var value = [];
+			var val = service.definition.baseColumn.name;
+			service.widgetData[0].forEach(function(item, index){
+				key.push(item.value);
+				value.push(item[val]);
+			})
+			data.push(key, value);
+			return data;
 		}
 
 	}

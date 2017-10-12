@@ -1,53 +1,63 @@
 <!-- Modal 2 -->
+<div block-ui="vmWidgetData.entityBlock">
+    <div class="modal-header">
+        <button type="button" ui-sref="createWidget" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="exampleModalLabel">Categorización y Valoración</h4>
+    </div>
+    <form name="vmWidgetData.dataForm" ng-submit="vmWidgetData.stepTree()">
+        <div class="modal-body">
+            
+            <div class="form-group" ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.entity.$untouched || vmWidgetData.dataForm.entity.$invalid))  || (vmWidgetData.dataForm.entity.$invalid && !vmWidgetData.dataForm.entity.$pristine) }">
+                <label for="recipient-name">Entidades</label>
+                <select name="entity" class="form-control" ng-model="vmWidgetData.definition.entity" ng-options="item as item.display_name for item in vmWidgetData.entitiesType track by item.id" ng-required="true" >						
+                </select>
+                <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.entity.$untouched || vmWidgetData.dataForm.entity.$invalid))  || (vmWidgetData.dataForm.entity.$invalid && !vmWidgetData.dataForm.entity.$pristine)" class="help-block">Por favor seleccione una entidad</p>
+            </div>
+            <div class="form-group" ng-if="vmWidgetData.definition.entity != null" 
+                ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine) }">
+                
+                <label for="recipient-name">Categoría</label>
+                <select class="form-control" name="category" ng-model="vmWidgetData.definition.baseColumn" ng-options="item as item.display_name for item in vmWidgetData.allColumns track by item.id"  ng-required="true" >
+                </select>
+                <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine)" class="help-block">Por favor seleccione una categoria</p>
+            </div>
 
-<div class="modal-header">
-    <button type="button" ui-sref="createWidget" class="close" data-dismiss="modal">&times;</button>
-    <h4 class="modal-title" id="exampleModalLabel">Categorización y Valoración</h4>
-</div>
-<form name="vmWidgetData.dataForm" ng-submit="vmWidgetData.stepTree()">
-    <div class="modal-body">
-        
-        <div class="form-group" ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.entity.$untouched || vmWidgetData.dataForm.entity.$invalid))  || (vmWidgetData.dataForm.entity.$invalid && !vmWidgetData.dataForm.entity.$pristine) }">
-            <label for="recipient-name">Entidades</label>
-            <select name="entity" class="form-control" ng-model="vmWidgetData.definition.entity" ng-options="item as item.display_name for item in vmWidgetData.entitiesType track by item.id" ng-change="vmWidgetData.getColumnsByEntity()" ng-required="true" >						
-            </select>
-            <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.entity.$untouched || vmWidgetData.dataForm.entity.$invalid))  || (vmWidgetData.dataForm.entity.$invalid && !vmWidgetData.dataForm.entity.$pristine)" class="help-block">Por favor seleccione una entidad</p>
-        </div>
-        <div class="form-group" ng-if="vmWidgetData.definition.entity != null" 
-            ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine) }">
-            
-            <label for="recipient-name">Categoría</label>
-            <select class="form-control" name="category" ng-model="vmWidgetData.definition.baseColumn" ng-options="item as item.display_name for item in vmWidgetData.columns track by item.id"  ng-required="true" >
-            </select>
-            <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.category.$untouched || vmWidgetData.dataForm.category.$invalid))  || (vmWidgetData.dataForm.category.$invalid && !vmWidgetData.dataForm.category.$pristine)" class="help-block">Por favor seleccione una categoria</p>
-        </div>
-
-        <div class="form-group" ng-if="vmWidgetData.definition.baseColumn != null && vmWidgetData.definition.entity.id == 2">
-            
-            <label for="recipient-name">Seleccione una columna y una operacion</label>
-            
-            <div class="row">
-                <div class="col-8 col-sm-6">
-                    <select ng-change="vmWidgetData.getOperationsByColumnType(vmWidgetData.valueColumn.type)" class="form-control" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.display_name for item in vmWidgetData.operationColumns track by item.id">
-                        <option value="" disabled selected>Seleccione una Columna</option>
-                    </select>
-                </div>
-                <div class="col-8 col-sm-6">  
-                    <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.operationsByType track by item.id" >
-                        <option value="" disabled selected>Seleccione una Operación</option>
-                    </select>
+            <div class="form-group" ng-if="vmWidgetData.definition.baseColumn != null && vmWidgetData.definition.entity.id == 2">
+                
+                <label for="recipient-name">Seleccione una columna y una operacion</label>
+                
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        <select class="form-control" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.display_name for item in vmWidgetData.allColumns track by item.id">
+                            <option value="" disabled selected>Seleccione una Columna</option>
+                        </select>
+                    </div>
+                    <div class="col-8 col-sm-6" ng-if="vmWidgetData.valueColumn.second_table == 'dim_fecha'">  
+                        <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.stringOperations track by item.id" >
+                            <option value="" disabled selected>Seleccione una Operación</option>
+                        </select>
+                    </div>
+                    <div class="col-8 col-sm-6" ng-if="vmWidgetData.valueColumn.type == 1">  
+                        <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.stringOperations track by item.id" >
+                            <option value="" disabled selected>Seleccione una Operación</option>
+                        </select>
+                    </div>
+                    <div class="col-8 col-sm-6" ng-if="(vmWidgetData.valueColumn.type == 2 || vmWidgetData.valueColumn.type == 4) && vmWidgetData.valueColumn.second_table != 'dim_fecha'">  
+                        <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.intOperations track by item.id" >
+                            <option value="" disabled selected>Seleccione una Operación</option>
+                        </select>
+                    </div>
+                    
                 </div>
                 
-            </div>
-            
-        </div>  
+            </div>  
 
-    </div>
+        </div>
 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-next" ng-click="vmWidgetData.backStepOne()">Atras</button>
-        <button type="submit" class="btn btn-default btn-next">Siguiente</button>
-        <button type="button" class="btn btn-default" ui-sref="createWidget">Cerrar</button>
-    </div>
-</form>
-
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-next" ng-click="vmWidgetData.backStepOne()">Atras</button>
+            <button type="submit" class="btn btn-default btn-next">Siguiente</button>
+            <button type="button" class="btn btn-default" ui-sref="createWidget">Cerrar</button>
+        </div>
+    </form>
+</div>

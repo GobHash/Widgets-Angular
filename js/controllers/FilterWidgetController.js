@@ -185,6 +185,7 @@
 
         function save(){
             EntitiesService.setHash();
+            console.log(EntitiesService.getHash());
             $state.go("createWidget");
         }
 

@@ -64,6 +64,8 @@
         vm.getColumnsForDateFilters = getColumnsForDateFilters;
         vm.addDateFilter = addDateFilter;
         vm.getFilterOperationsByType = getFilterOperationsByType;
+        vm.save = save;
+        vm.deleteDateFilter = deleteDateFilter;
 
         function stepFour(){
             setFilters();
@@ -130,7 +132,7 @@
             }
         }
         function deleteDateFilter(filter){
-            var i = vm.filters.indexOf(filter);
+            var i = vm.dateFilters.indexOf(filter);
             if(i != -1) {
                 vm.dateFilters.splice(i, 1);
             }
@@ -183,7 +185,7 @@
 
         function save(){
             EntitiesService.setHash();
-            state.go("createWidget");
+            $state.go("createWidget");
         }
 
     }

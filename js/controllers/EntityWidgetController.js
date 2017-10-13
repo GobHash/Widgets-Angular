@@ -152,7 +152,7 @@
 
         function close(){
             EntitiesService.reset();
-            $state.go("createWidget ")
+            $state.go("createWidget")
         }
         console.log(vm.definition);
 

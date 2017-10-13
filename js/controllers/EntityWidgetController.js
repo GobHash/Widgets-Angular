@@ -39,6 +39,7 @@
         vm.getOperationsByColumnType = getOperationsByColumnType;
         vm.getStringsOperations = getStringsOperations;
         vm.getIntOperations = getIntOperations;
+        vm.close = close;
         //getColumnsByEntity();
 
 
@@ -144,8 +145,14 @@
         function getStringsOperations(){
             vm.stringOperations = EntitiesService.getOperationsByColumnType(vm.operations, 1);
         }
+
         function getIntOperations(){
             vm.intOperations = EntitiesService.getOperationsByColumnType(vm.operations, 2);
+        }
+
+        function close(){
+            EntitiesService.reset();
+            $state.go("createWidget ")
         }
         console.log(vm.definition);
 

@@ -50,7 +50,12 @@
 			{id: 3, name: 'Gráfico de Líneas'}
 		];
 		var columns = [];
+		var widgetQueryData = [];
 		var widgetData = [];
+		var hash = {
+			"definition":null,
+			"data":null
+		};
 		/*
 		var entityColumns = [
 	
@@ -118,7 +123,12 @@
 			getPreviewData : getPreviewData,
 			widgetData : widgetData,
 			setData : setData,
-			getData : getData
+			getData : getData,
+			hash : hash,
+			setHash : setHash,
+			getHash : getHash,
+			widgetQueryData : widgetQueryData,
+			reset : reset
 		};
 		return service;
 
@@ -259,7 +269,7 @@
 		}
 
 		function setData(data){
-			service.widgetData = data;
+			service.widgetQueryData = data;
 		}
 
 		function getData(){
@@ -267,12 +277,37 @@
 			var key = [];
 			var value = [];
 			var val = service.definition.baseColumn.name;
-			service.widgetData[0].forEach(function(item, index){
+			service.widgetQueryData[0].forEach(function(item, index){
 				key.push(item.value);
 				value.push(item[val]);
 			})
 			data.push(key, value);
+			service.widgetData = data;
 			return data;
+		}
+
+		function setHash(){
+			service.hash.definition = service.definition;
+			service.hash.data = service.widgetData;
+		}
+
+		function getHash(){
+			return service.hash;
+		}
+
+		function reset(){
+			service.definition = {
+				name : null,
+				widgetType : null,
+				entity : null,
+				filters : null,
+				dateFilters: null,
+				baseColumn : null,
+				category:{
+					operation:{},
+					column:{}
+				}
+			};
 		}
 
 	}

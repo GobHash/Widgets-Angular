@@ -181,6 +181,11 @@
             vm.operationsDate = EntitiesService.getOperationsByColumnType(vm.operations, 5)
         }
 
+        function save(){
+            EntitiesService.setHash();
+            state.go("createWidget");
+        }
+
     }
     
 })();

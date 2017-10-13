@@ -27,6 +27,7 @@
         }
         
         vm.stepTwo = stepTwo;
+        vm.close = close;
         getEntitites()
         function getEntitites(){
             vm.widgetsType = EntitiesService.getWidgets();
@@ -44,6 +45,11 @@
 
         function setDefinition(){
             EntitiesService.setBasicDefinition(vm.definition);
+        }
+
+        function close(){
+            EntitiesService.reset();
+            $state.go("createWidget ")
         }
         
     }

@@ -122,7 +122,7 @@
         function reset(){
             vm.definition = {};
             EntitiesService.setDefinition(vm.definition);
-            $state.go("createWidget");
+            $state.go("add_post");
         }
 
         function deleteFilter(filter){
@@ -185,7 +185,8 @@
 
         function save(){
             EntitiesService.setHash();
-            $state.go("createWidget");
+            $rootScope.SetGraphic();
+            $state.go("add_post");
         }
 
     }

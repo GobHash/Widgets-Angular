@@ -19,7 +19,6 @@
 
     function indexWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
         var vm = this;
-        
     }
     
 })();

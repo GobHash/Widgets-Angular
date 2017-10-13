@@ -66,7 +66,7 @@
 			'CreateWidgetController',
 			'vmWidgetIndex',
 			'js/WidgetModule/views/widgetIndex.html',
-			'createWidget',
+			'add_post',
 			{}
 			);
         registerStatefulModal(

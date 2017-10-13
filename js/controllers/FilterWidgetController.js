@@ -73,10 +73,10 @@
                 console.log("RESPONSE POST")
                 console.log(data)
                 EntitiesService.setData(data);
+                $state.go('widgetPreview');
             }).catch(function(err){
                 console.log(err)
             }).finally(function(){
-                $state.go('widgetPreview');
             });
         };
         function stepTree(){

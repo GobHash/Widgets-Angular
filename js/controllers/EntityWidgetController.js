@@ -14,12 +14,13 @@
         "$rootScope",
         "$state",
         "$stateParams",
-        "EntitiesService"
+        "EntitiesService",
+        "blockUI"
     ];
 
-    function entityWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService) {
+    function entityWidgetController($scope, $rootScope, $state, $stateParams, EntitiesService, blockUI) {
         var vm = this;
-        // vm.loginBlockUI = blockUI.instances.get('loginBlock');
+        vm.dataBlockUI = blockUI.instances.get('dataBlock');
         getDefinition();
         vm.valueColumn = null;
         vm.selectValueOp = null;
@@ -42,10 +43,13 @@
 
 
         function getEntitites(){
+            vm.dataBlockUI.start();
             vm.entitiesType = EntitiesService.getEntities().then(function(data){
                 vm.entitiesType = data
             }).catch(function(err){
                 console.log(err);
+            }).finally(function(){
+                vm.dataBlockUI.stop()
             });
         }
 
@@ -58,22 +62,27 @@
         }
 
         function getAllColumns(){
+            vm.dataBlockUI.start();
             EntitiesService.getAllColumns().then(function(data){
                 vm.allColumns = data;
             }).catch(function(err){
                 console.log(err);
             }).finally(function(){
                 getColumsForOperations();
+                vm.dataBlockUI.stop();
             })
         }
 
         function getColumnsByEntity(){
+            vm.dataBlockUI.start();
             if(vm.definition.entity != null){
                 vm.columns = EntitiesService.getColumnsByEntity(vm.definition.entity.id)
                     .then(function(data){
                         vm.columns = data;
                     }).catch(function(err){
                         console.log(err);
+                    }).finally(function(){
+                        vm.dataBlockUI.stop();
                     });
             }
         }
@@ -111,12 +120,15 @@
             
         }
         function getOperationsByType(){
+            vm.dataBlockUI.start()
             EntitiesService.getOperationsByType(2).then(function(data){
                 vm.operations = data;
                 getStringsOperations()
                 getIntOperations()
             }).catch(function(err){
                 console.log(err);
+            }).finally(function(){
+                vm.dataBlockUI.stop();
             });
         }
 

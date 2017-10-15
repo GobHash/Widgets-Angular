@@ -28,25 +28,29 @@
                     <label for="recipient-name">Seleccione una columna y una operacion</label>
                     
                     <div class="row">
-                        <div class="col-8 col-sm-6">
-                            <select class="form-control" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.display_name for item in vmWidgetData.allColumns track by item.id">
+                        <div class="col-8 col-sm-6" ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.column.$untouched || vmWidgetData.dataForm.column.$invalid))  || (vmWidgetData.dataForm.column.$invalid && !vmWidgetData.dataForm.column.$pristine) }">
+                            <select class="form-control" name="column" placeholder="Columna" ng-model="vmWidgetData.valueColumn" ng-options="item as item.display_name for item in vmWidgetData.allColumns track by item.id" ng-required="true">
                                 <option value="" disabled selected>Seleccione una Columna</option>
                             </select>
+                            <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.column.$untouched || vmWidgetData.dataForm.column.$invalid))  || (vmWidgetData.dataForm.column.$invalid && !vmWidgetData.dataForm.column.$pristine)" class="help-block">Por favor seleccione una columna</p>
                         </div>
-                        <div class="col-8 col-sm-6" ng-if="vmWidgetData.valueColumn.second_table == 'dim_fecha'">  
-                            <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.stringOperations track by item.id" >
+                        <div class="col-8 col-sm-6" ng-if="vmWidgetData.valueColumn.second_table == 'dim_fecha'" ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.operation.$untouched || vmWidgetData.dataForm.operation.$invalid))  || (vmWidgetData.dataForm.operation.$invalid && !vmWidgetData.dataForm.operation.$pristine) }">  
+                            <select class="form-control" name="operation" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.stringOperations track by item.id" ng-required="true">
                                 <option value="" disabled selected>Seleccione una Operación</option>
                             </select>
+                            <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.operation.$untouched || vmWidgetData.dataForm.operation.$invalid))  || (vmWidgetData.dataForm.operation.$invalid && !vmWidgetData.dataForm.operation.$pristine)" class="help-block">Por favor seleccione una operacion</p>
                         </div>
-                        <div class="col-8 col-sm-6" ng-if="vmWidgetData.valueColumn.type == 1">  
-                            <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.stringOperations track by item.id" >
+                        <div class="col-8 col-sm-6" ng-if="vmWidgetData.valueColumn.type == 1" ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.operation.$untouched || vmWidgetData.dataForm.operation.$invalid))  || (vmWidgetData.dataForm.operation.$invalid && !vmWidgetData.dataForm.operation.$pristine) }">  
+                            <select class="form-control" name="operation" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.stringOperations track by item.id" ng-required="true">
                                 <option value="" disabled selected>Seleccione una Operación</option>
                             </select>
+                            <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.operation.$untouched || vmWidgetData.dataForm.operation.$invalid))  || (vmWidgetData.dataForm.operation.$invalid && !vmWidgetData.dataForm.operation.$pristine)" class="help-block">Por favor seleccione una operacion</p>
                         </div>
-                        <div class="col-8 col-sm-6" ng-if="(vmWidgetData.valueColumn.type == 2 || vmWidgetData.valueColumn.type == 4) && vmWidgetData.valueColumn.second_table != 'dim_fecha'">  
-                            <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.intOperations track by item.id" >
+                        <div class="col-8 col-sm-6" ng-if="(vmWidgetData.valueColumn.type == 2 || vmWidgetData.valueColumn.type == 4) && vmWidgetData.valueColumn.second_table != 'dim_fecha'" ng-class="{ 'has-error' : (vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.operation.$untouched || vmWidgetData.dataForm.operation.$invalid))  || (vmWidgetData.dataForm.operation.$invalid && !vmWidgetData.dataForm.operation.$pristine) }">  
+                            <select class="form-control" placeholder="Operacion" ng-model="vmWidgetData.selectValueOp" ng-options="item as item.name for item in vmWidgetData.intOperations track by item.id" ng-required="true">
                                 <option value="" disabled selected>Seleccione una Operación</option>
                             </select>
+                            <p ng-show="(vmWidgetData.dataForm.$submitted && (vmWidgetData.dataForm.operation.$untouched || vmWidgetData.dataForm.operation.$invalid))  || (vmWidgetData.dataForm.operation.$invalid && !vmWidgetData.dataForm.operation.$pristine)" class="help-block">Por favor seleccione una operacion</p>
                         </div>
                         
                     </div>

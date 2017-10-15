@@ -276,7 +276,7 @@
 			var data = [];
 			var key = [];
 			var value = [];
-			var val = service.definition.baseColumn.name;
+			var val = service.widgetQueryData[1].fields[1].name;
 			service.widgetQueryData[0].forEach(function(item, index){
 				key.push(item.value);
 				value.push(item[val]);

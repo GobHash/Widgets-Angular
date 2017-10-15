@@ -40,7 +40,7 @@
             return $http({
 
                 "method": "GET", 
-                "url": "http://localhost:3000/v1/column/columns/" + id,
+                "url": "https://api-dev.gobhash.com/v1/column/columns/" + id,
                 "data" : {
                 },
                 "params" : {
@@ -60,7 +60,7 @@
             return $http({
 
                 "method": "GET", 
-                "url": "http://localhost:3000/v1/column/columns",
+                "url": "https://api-dev.gobhash.com/v1/column/columns",
                 "data" : {},
                 "params" : {},
                 "headers": {
@@ -78,7 +78,7 @@
             return $http({
 
                 "method": "POST", 
-                "url": "http://localhost:3000/v1/widgets/preview",
+                "url": "https://api-dev.gobhash.com/v1/widgets/preview",
                 "data" : {'definition':definition},
                 "params" : {},
                 "headers": {

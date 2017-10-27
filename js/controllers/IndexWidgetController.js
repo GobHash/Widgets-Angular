@@ -4,7 +4,7 @@
     angular.module("Widgets")
         .controller("IndexWidgetController", indexWidgetController)
         .component("widget", {
-            templateUrl: "js/WidgetModule/views/index.html",
+            templateUrl: "node_modules/widgets-angular/views/index.html",
             controller: "IndexWidgetController",
             controllerAs: "vmWidgetHome"
         });

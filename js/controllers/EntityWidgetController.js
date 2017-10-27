@@ -4,7 +4,7 @@
     angular.module("Widgets")
         .controller("EntityWidgetController", entityWidgetController)
         .component("widgetEntity", {
-            templateUrl: "js/WidgetModule/views/widgetData.html",
+            templateUrl: "node_modules/widgets-angular/views/widgetData.html",
             controller: "EntityWidgetController",
             controllerAs: "vmWidgetData"
         });

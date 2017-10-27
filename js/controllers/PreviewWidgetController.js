@@ -4,7 +4,7 @@
     angular.module("Widgets")
         .controller("PreviewWidgetController", previewWidgetController)
         .component("widgetPreview", {
-            templateUrl: "js/WidgetModule/views/widgetPreview.html",
+            templateUrl: "node_modules/widgets-angular/views/widgetPreview.html",
             controller: "PreviewWidgetController",
             controllerAs: "vmWidgetPreview"
         });

@@ -65,7 +65,7 @@
 			'widgetIndex',
 			'CreateWidgetController',
 			'vmWidgetIndex',
-			'js/WidgetModule/views/widgetIndex.html',
+			'node_modules/widgets-angular/views/widgetIndex.html',
 			'add_post',
 			{}
 			);
@@ -73,7 +73,7 @@
 			'widgetEntity',//Nombre del estado
 			'EntityWidgetController',//Controlador
 			'vmWidgetData',
-			'js/WidgetModule/views/widgetData.html',//Template
+			'node_modules/widgets-angular/views/widgetData.html',//Template
 			'widgetIndex',//Papa
 			{}
 			);
@@ -81,7 +81,7 @@
 			'widgetFilter',//Nombre del estado
 			'FilterWidgetController',//Controller
 			'vmWidgetFilter',
-			'js/WidgetModule/views/widgetFilter.html', //Template
+			'node_modules/widgets-angular/views/widgetFilter.html', //Template
 			'widgetEntity',//Papa
 			{}
 			);
@@ -89,7 +89,7 @@
 			'widgetPreview',//Nombre del estado
 			'PreviewWidgetController',//Controller
 			'vmWidgetPreview',
-			'js/WidgetModule/views/widgetPreview.html', //Template
+			'node_modules/widgets-angular/views/widgetPreview.html', //Template
 			'widgetFilter',//Papa
 			{}
 			);

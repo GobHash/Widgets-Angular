@@ -25,6 +25,58 @@
             }
         ];
 
+        var months = [
+            {
+                name: "Enero",
+                value: 1
+            },
+            {
+                name: "Febrero",
+                value: 2
+            },
+            {
+                name: "Marzo",
+                value: 3
+            },
+            {
+                name: "Abril",
+                value: 4
+            }, 
+            {
+                name: "Mayo",
+                value: 5
+            },
+            {
+                name: "Junio",
+                value: 6
+            },
+            {
+                name: "Julio",
+                value: 7
+            },
+            {
+                name: "Agosto",
+                value: 8
+            },
+            {
+                name: "Septiembre",
+                value: 9
+            },
+            {
+                name: "Octubre",
+                value: 10
+            },
+            {
+                name: "Noviembre",
+                value: 11
+            },
+            {
+                name: "Diciembre",
+                value: 12
+            }
+        ];
+        var years = [2016]
+
         var dateFilter = null;
         var dateOperationsFilters = null;
 
@@ -43,7 +95,12 @@
             dateFilter: dateFilter,
             getDateOperationFilters: getDateOperationFilters,
             dateOperationsFilters: dateOperationsFilters,
-            getFilterOperationsByType : getFilterOperationsByType
+            getFilterOperationsByType : getFilterOperationsByType,
+            months : months,
+            years : years,
+            getMonths : getMonths,
+            getYears : getYears
+
         }
         return service;
 
@@ -123,6 +180,14 @@
             }).catch(function(err){
                 return err;
             });
+        }
+
+        function getMonths(){
+            return service.months;
+        }
+
+        function getYears(){
+            return service.years;
         }
     }
 })();

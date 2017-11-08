@@ -78,7 +78,7 @@
             return $http({
 
                 "method": "POST", 
-                "url": "https://api-dev.gobhash.com/v1/widgets/preview",
+                "url": "http://localhost:3000/v1/widgets/preview",
                 "data" : {'definition':definition},
                 "params" : {},
                 "headers": {

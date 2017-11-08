@@ -37,6 +37,8 @@
         getColumnsForFilters();
         getFilterOperationsByType(1);
         getColumnsForDateFilters();
+        getMonths();
+        getYears();
 
         //StartDate
         vm.dpOpen = false;
@@ -76,6 +78,7 @@
                 EntitiesService.getPreviewData().then(function(data){
                     EntitiesService.setData(data);
                     $state.go('widgetPreview');
+                    console.log(vm.definition);
                 }).catch(function(err){
                     console.log(err)
                 }).finally(function(){
@@ -172,6 +175,7 @@
                 getOperationsForDateColumns(vm.operations, 5);
                 getStringOperations(vm.operations, 1);
                 getIntOperations(vm.operations, 4)
+                getOperationsForYearColumns(vm.operations, 6)
 
             })
         }
@@ -192,7 +196,10 @@
         }
 
         function getOperationsForDateColumns(){
-            vm.operationsDate = EntitiesService.getOperationsByColumnType(vm.operations, 5)
+            vm.operationsForMonths = EntitiesService.getOperationsByColumnType(vm.operations, 5)
+        }
+        function getOperationsForYearColumns(){
+            vm.operationsForYear = EntitiesService.getOperationsByColumnType(vm.operations, 6)
         }
 
         function save(){
@@ -210,8 +217,15 @@
                     $state.go("add_post");
                 });
             }
-
             
+        }
+
+        function getMonths (){
+            vm.months = FilterService.getMonths();
+        }
+
+        function getYears(){
+            vm.years = FilterService.getYears();
         }
 
     }
